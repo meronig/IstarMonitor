@@ -485,7 +485,7 @@ cond
 <ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
 <ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:15</ATTRIBUTE>
-<ATTRIBUTE name="Type of decomposition" type="ENUMERATION">XOR</ATTRIBUTE>
+<ATTRIBUTE name="Type of decomposition" type="ENUMERATION">OR</ATTRIBUTE>
 <ATTRIBUTE name="Flag" type="STRING">model</ATTRIBUTE>
 </CONNECTOR>
 <CONNECTOR id="con.14438" class="Decomposition Link">
@@ -498,7 +498,7 @@ cond
 <ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
 <ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:16</ATTRIBUTE>
-<ATTRIBUTE name="Type of decomposition" type="ENUMERATION">XOR</ATTRIBUTE>
+<ATTRIBUTE name="Type of decomposition" type="ENUMERATION">OR</ATTRIBUTE>
 <ATTRIBUTE name="Flag" type="STRING">model</ATTRIBUTE>
 </CONNECTOR>
 <CONNECTOR id="con.14439" class="Decomposition Link">
