@@ -3,8 +3,10 @@ var xml2js = require('xml2js');
 var Client = require('node-rest-client').Client;
 var client = new Client();
 var express = require('express');
+var bodyParser = require('body-parser')
 var app = express();
 app.use(express.static(__dirname));
+app.use(bodyParser.text({ type: 'application/xml' }));
 
 var localPort = 8082;
 var enginePort = 8083;
@@ -32,18 +34,19 @@ const decomposition = {
 
 var goalModelPath = 'goalModel.xml';
 
-if(process.argv.length > 2) {
-	goalModelPath = process.argv[2];
+if(process.argv.length > 3) {
+	engineHost = process.argv[2];
+    enginePort = process.argv[3];
 }
 
 if(process.argv.length > 4) {
-	engineHost = process.argv[3];
-    enginePort = process.argv[4];
+    localPort = process.argv[4];
 }
 
 if(process.argv.length > 5) {
-    localPort = process.argv[5];
+	goalModelPath = process.argv[5];
 }
+
 
 client.registerMethod("getEGSM", "http://"+engineHost+":"+enginePort+"/api/config_stages", "GET");
 
@@ -89,12 +92,27 @@ app.get('/api/notifyStageClosed', function (req, res) {
     res.end();
 })
 
+app.post('/api/loadModel', function (req, res) { 
+    const xml = req.body;
+    console.log(req.body);
+    xml2js.parseString(xml, function (err, result) {
+            if (err) { 
+                return res.status(400).send('Invalid XML format'); 
+            } 
+            console.log('model parsed');
+            goalModel = result;
+            initTasksFromADOxx();
+            res.json(nodes); 
+        
+    }); 
+});
+
 var server = app.listen(localPort, function () {
   var port = server.address().port;
   console.log("Broker listening on port "+port);
 })
 
-readFile(goalModelPath);
+//readFile(goalModelPath);
 
 function parseEGSMModel(egsm,stageName,open){
 
@@ -348,54 +366,4 @@ function deriveFulfillment(task) {
         }
     }
 
-    /*
-    if (decomposition == decomposition.AND){
-        satisfied = true;
-        for (var c in nodes[task].children){
-            if (nodes[c].fulfillment == fulfillment.DENIED){
-                nodes[task].fulfillment = fulfillment.DENIED;
-                return;
-            } else if (nodes[c].fulfillment == fulfillment.UNKNOWN){
-                satisfied = false;
-            }
-        }
-        if(satisfied){
-            nodes[task].fulfillment = fulfillment.SATISFIED;
-        } else {
-            nodes[task].fulfillment = fulfillment.UNKNOWN;
-        }
-    } else if (decomposition == decomposition.OR){
-        denied = true;
-        for (var c in nodes[task].children){
-            if (nodes[c].fulfillment == fulfillment.SATISFIED){
-                nodes[task].fulfillment = fulfillment.SATISFIED;
-                return;
-            } else if (nodes[c].fulfillment == fulfillment.UNKNOWN){
-                denied = false;
-            }
-        }
-        if(denied){
-            nodes[task].fulfillment = fulfillment.DENIED;
-        } else {
-            nodes[task].fulfillment = fulfillment.UNKNOWN;
-        }
-    } else if (decomposition == decomposition.XOR){
-        unknown = 0;
-        satisfied = 0;
-        for (var c in nodes[task].children){
-            if (nodes[c].fulfillment == fulfillment.SATISFIED){
-                satisfied++;
-            } else if (nodes[c].fulfillment == fulfillment.UNKNOWN){
-                unknown++;
-            }
-        }
-        if(satisfied == 1 && unknown == 0) {
-            nodes[task].fulfillment = fulfillment.SATISFIED;
-        } else if (satisfied > 1 || (satisfied == 0 && unknown == 0)){
-            nodes[task].fulfillment = fulfillment.DENIED;
-        } else {
-            nodes[task].fulfillment = fulfillment.UNKNOWN;
-        }
-    }
-    */
 }

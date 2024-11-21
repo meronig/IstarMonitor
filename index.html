@@ -204,9 +204,13 @@
                 });
 
             node.append("text")
-                .attr("dy", 5) // Center the text vertically within the node
+                .attr("dy", -5) // Center the text vertically within the node
                 .attr("text-anchor", "middle")
                 .text(d => d.data.name);
+            node.append("text")
+                .attr("dy", +15) // Center the text vertically within the node
+                .attr("text-anchor", "middle")
+                .text(d => '(' + d.data.fulfillment + ')');
 
         }
     </script>
