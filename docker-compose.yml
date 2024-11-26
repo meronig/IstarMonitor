@@ -8,15 +8,19 @@ services:
     depends_on:
       - nodered
       - paso
+    volumes:
+      - ./experiment/istar-monitor:/app/config
     
   nodered:
     image: nodered/node-red:4.0.5-22
     ports:
       - "1880:1880"
     volumes:
-      - ./experiment:/data
+      - ./experiment/node-red:/data
       
   paso:
     image: smartifact/engine:v2
     ports:
       - "8083:8083"
+    volumes:
+      - ./experiment/paso:/app/config

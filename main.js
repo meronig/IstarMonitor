@@ -4,13 +4,11 @@ var Client = require('node-rest-client').Client;
 var client = new Client();
 var express = require('express');
 var bodyParser = require('body-parser')
+var conf          = require('./config/conf');
 var app = express();
 app.use(express.static(__dirname));
 app.use(bodyParser.text({ type: 'application/xml' }));
 
-var localPort = 8082;
-var enginePort = 8083;
-var engineHost = "localhost";
 var nodes = {};
 var goalModel = {};
 
@@ -32,23 +30,31 @@ const decomposition = {
     XOR: 'XOR'
 }
 
-var goalModelPath = 'goalModel.xml';
-
+if(process.argv.length > 2){
+    var inputPort = process.argv[2];
+}
 if(process.argv.length > 3) {
-	engineHost = process.argv[2];
-    enginePort = process.argv[3];
+	var goalModel = process.argv[3];
 }
 
-if(process.argv.length > 4) {
-    localPort = process.argv[4];
+// var inputPort = process.argv[2];
+// configure web server
+var port;
+if(inputPort > 8000 && inputPort < 65536){
+  port = process.env.PORT || inputPort;
+}
+else{
+  port = process.env.PORT || conf.port;
 }
 
-if(process.argv.length > 5) {
-	goalModelPath = process.argv[5];
-}
-
-
-client.registerMethod("getEGSM", "http://"+engineHost+":"+enginePort+"/api/config_stages", "GET");
+if(goalModel != undefined){
+    goalModelPath = goalModel;
+  }
+  else{
+    goalModelPath = conf.goalModelPath;
+  }
+  
+client.registerMethod("getEGSM", conf.engineEndpoint, "GET");
 
 app.get('/api/reset', function (req, res) {
     nodes = {};
@@ -107,12 +113,10 @@ app.post('/api/loadModel', function (req, res) {
     }); 
 });
 
-var server = app.listen(localPort, function () {
+var server = app.listen(port, function () {
   var port = server.address().port;
-  console.log("Broker listening on port "+port);
+  console.log("I-star monitor listening on port "+port);
 })
-
-//readFile(goalModelPath);
 
 function parseEGSMModel(egsm,stageName,open){
 

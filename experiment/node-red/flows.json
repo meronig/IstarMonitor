@@ -1,0 +1,1614 @@
+[
+    {
+        "id": "f4d891657f8b6f5a",
+        "type": "tab",
+        "label": "RunTests-LHR-AMS",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "92763204f8f39f07",
+        "type": "tab",
+        "label": "AggregateEvents",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d2f1e88c6eb8c50a",
+        "type": "tab",
+        "label": "InitModel",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "58a767c7bf80eb15",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "100001084820",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "100001084820",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 380,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "446ca6cf5fa1ece6",
+        "type": "link call",
+        "z": "f4d891657f8b6f5a",
+        "name": "",
+        "links": [
+            "dd82537cd3114775"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 900,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1a89336f011fb495",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153039",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153039",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 820,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "e9bc72805d7033b3",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153053",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153053",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 337.63340759277344,
+        "y": 421.4285659790039,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "8c233616863705fc",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153191",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153191",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 337.63340759277344,
+        "y": 461.4285659790039,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "d212ad58f0f4e263",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153192",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153192",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 337.63340759277344,
+        "y": 501.4285659790039,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "1ab9122896f2c322",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153251",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153251",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 337.63340759277344,
+        "y": 541.4285659790039,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "597fd89933fccc36",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153265",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153265",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 780,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "dbac6962051999af",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153294",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153294",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 337.63340759277344,
+        "y": 581.4285659790039,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "f039bbf6aee21d04",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153372",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153372",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 337.63340759277344,
+        "y": 621.4285659790039,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "c8c355bc09ee0676",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153375",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153375",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 740,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "663769dcae8d0544",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153401",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153401",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 660,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "fde7e87e412e5ff8",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153397",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153397",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 860,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "68e2089cb6c6d060",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153387",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153387",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 700,
+        "wires": [
+            [
+                "0a3f5ea3b6a70631"
+            ]
+        ]
+    },
+    {
+        "id": "123db2aa86b0b051",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000152903",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000152903",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 80,
+        "wires": [
+            [
+                "8df5c09dfeeb0697"
+            ]
+        ]
+    },
+    {
+        "id": "53fd768fe41a72b5",
+        "type": "inject",
+        "z": "f4d891657f8b6f5a",
+        "name": "150000153216",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "pathid",
+                "v": "150000153216",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 120,
+        "wires": [
+            [
+                "8df5c09dfeeb0697"
+            ]
+        ]
+    },
+    {
+        "id": "eb2fa502757119d4",
+        "type": "comment",
+        "z": "f4d891657f8b6f5a",
+        "name": "executions not conformant to process model",
+        "info": "",
+        "x": 290,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "b2c970e89c1683cf",
+        "type": "comment",
+        "z": "f4d891657f8b6f5a",
+        "name": "executions conformant to process model",
+        "info": "",
+        "x": 280,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "8df5c09dfeeb0697",
+        "type": "change",
+        "z": "f4d891657f8b6f5a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "logFile",
+                "pt": "msg",
+                "to": "/data/lhr-ams/LHR_AMS_NC.csv",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "egsmModel",
+                "pt": "msg",
+                "to": "/data/lhr-ams/lhr-ams-egsm.xml",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "infoModel",
+                "pt": "msg",
+                "to": "/data/lhr-ams/lhr-ams-infoModel.xsd",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "goalModel",
+                "pt": "msg",
+                "to": "/data/lhr-ams/goalModel.xml",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 80,
+        "wires": [
+            [
+                "446ca6cf5fa1ece6"
+            ]
+        ]
+    },
+    {
+        "id": "0a3f5ea3b6a70631",
+        "type": "change",
+        "z": "f4d891657f8b6f5a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "logFile",
+                "pt": "msg",
+                "to": "/data/lhr-ams/LHR_AMS.csv",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "egsmModel",
+                "pt": "msg",
+                "to": "/data/lhr-ams/lhr-ams-egsm.xml",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "infoModel",
+                "pt": "msg",
+                "to": "/data/lhr-ams/lhr-ams-infoModel.xsd",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "goalModel",
+                "pt": "msg",
+                "to": "/data/lhr-ams/goalModel.xml",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 480,
+        "wires": [
+            [
+                "446ca6cf5fa1ece6"
+            ]
+        ]
+    },
+    {
+        "id": "ad2d5852.ca2d68",
+        "type": "csv",
+        "z": "92763204f8f39f07",
+        "name": "Parse log",
+        "sep": ";",
+        "hdrin": false,
+        "hdrout": "",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "pathid, speed, date, trucknumber, timestamp, dest, source, position, country",
+        "skip": 0,
+        "strings": true,
+        "x": 580,
+        "y": 120,
+        "wires": [
+            [
+                "648136387fe15471"
+            ]
+        ]
+    },
+    {
+        "id": "41e996e6.e85578",
+        "type": "switch",
+        "z": "92763204f8f39f07",
+        "name": "Discretize movement",
+        "property": "payload.speed",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "40",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 1074.680908203125,
+        "y": 89.87622833251953,
+        "wires": [
+            [
+                "fa7b4758.43cd8"
+            ],
+            [
+                "f85764ec.09fd38"
+            ]
+        ]
+    },
+    {
+        "id": "4d08a428.8282d4",
+        "type": "switch",
+        "z": "92763204f8f39f07",
+        "name": "Determine country",
+        "property": "payload.country",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "GB",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 989.680908203125,
+        "y": 418.8762435913086,
+        "wires": [
+            [
+                "819a7acc.6a207"
+            ],
+            [
+                "1f1639b9.07207e"
+            ]
+        ]
+    },
+    {
+        "id": "819a7acc.6a207",
+        "type": "switch",
+        "z": "92763204f8f39f07",
+        "name": "Discretize position UK",
+        "property": "payload.position",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "London Heathrow Airport",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Peene",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Newington",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Cheriton",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Folkestone",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 1105.3475341796875,
+        "y": 292.54293060302734,
+        "wires": [
+            [
+                "4eeb1fb0.59d8"
+            ],
+            [
+                "1cb3948c.b10b3b"
+            ],
+            [
+                "1cb3948c.b10b3b"
+            ],
+            [
+                "1cb3948c.b10b3b"
+            ],
+            [
+                "1cb3948c.b10b3b"
+            ],
+            [
+                "c482e155.115858"
+            ]
+        ]
+    },
+    {
+        "id": "1f1639b9.07207e",
+        "type": "switch",
+        "z": "92763204f8f39f07",
+        "name": "Discretize Position EU",
+        "property": "payload.position",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Coquelles",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Luchthaven Schiphol",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 3,
+        "x": 1130.680908203125,
+        "y": 512.8762435913086,
+        "wires": [
+            [
+                "1f51b49.b42c5cb"
+            ],
+            [
+                "a10d389a.d32b48"
+            ],
+            [
+                "b5b42461.327af"
+            ]
+        ]
+    },
+    {
+        "id": "fa7b4758.43cd8",
+        "type": "change",
+        "z": "92763204f8f39f07",
+        "name": "Moving",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Moving",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1216.680908203125,
+        "y": 25.47620391845703,
+        "wires": [
+            [
+                "d4f49e16.a405b"
+            ]
+        ]
+    },
+    {
+        "id": "f85764ec.09fd38",
+        "type": "change",
+        "z": "92763204f8f39f07",
+        "name": "Still",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Still",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1214.680908203125,
+        "y": 159.47620391845703,
+        "wires": [
+            [
+                "d4f49e16.a405b"
+            ]
+        ]
+    },
+    {
+        "id": "4eeb1fb0.59d8",
+        "type": "change",
+        "z": "92763204f8f39f07",
+        "name": "Lhr",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Lhr",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1287.680908203125,
+        "y": 211.47620391845703,
+        "wires": [
+            [
+                "d4f49e16.a405b"
+            ]
+        ]
+    },
+    {
+        "id": "c482e155.115858",
+        "type": "change",
+        "z": "92763204f8f39f07",
+        "name": "HwGB",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "HwGB",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1288.680908203125,
+        "y": 349.4762191772461,
+        "wires": [
+            [
+                "d4f49e16.a405b"
+            ]
+        ]
+    },
+    {
+        "id": "1cb3948c.b10b3b",
+        "type": "change",
+        "z": "92763204f8f39f07",
+        "name": "Chr",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Chr",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1316.680908203125,
+        "y": 280.4762191772461,
+        "wires": [
+            [
+                "d4f49e16.a405b"
+            ]
+        ]
+    },
+    {
+        "id": "1f51b49.b42c5cb",
+        "type": "change",
+        "z": "92763204f8f39f07",
+        "name": "Coq",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Coq",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1308.680908203125,
+        "y": 423.4762191772461,
+        "wires": [
+            [
+                "d4f49e16.a405b"
+            ]
+        ]
+    },
+    {
+        "id": "a10d389a.d32b48",
+        "type": "change",
+        "z": "92763204f8f39f07",
+        "name": "Ams",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Ams",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1318.680908203125,
+        "y": 505.4762191772461,
+        "wires": [
+            [
+                "d4f49e16.a405b"
+            ]
+        ]
+    },
+    {
+        "id": "b5b42461.327af",
+        "type": "change",
+        "z": "92763204f8f39f07",
+        "name": "Hw",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Hw",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1303.680908203125,
+        "y": 568.4762191772461,
+        "wires": [
+            [
+                "d4f49e16.a405b"
+            ]
+        ]
+    },
+    {
+        "id": "44a6394c.f6aa3",
+        "type": "function",
+        "z": "92763204f8f39f07",
+        "name": "Set topic location",
+        "func": "msg.topic = 'location';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 833.8237915039062,
+        "y": 514.9047470092773,
+        "wires": [
+            [
+                "4d08a428.8282d4"
+            ]
+        ]
+    },
+    {
+        "id": "bf11563c.ace6a8",
+        "type": "function",
+        "z": "92763204f8f39f07",
+        "name": "Set topic speed",
+        "func": "msg.topic = 'speed';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 861.5380859375,
+        "y": 248.67620086669922,
+        "wires": [
+            [
+                "41e996e6.e85578"
+            ]
+        ]
+    },
+    {
+        "id": "d4f49e16.a405b",
+        "type": "join",
+        "z": "92763204f8f39f07",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "timeout": "",
+        "count": "2",
+        "x": 1497.680892944336,
+        "y": 286.47620391845703,
+        "wires": [
+            [
+                "41c9a4cd.f08de4"
+            ]
+        ]
+    },
+    {
+        "id": "e94a7f07.89c508",
+        "type": "debug",
+        "z": "92763204f8f39f07",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 2030,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "2b747e79.0e5c32",
+        "type": "delay",
+        "z": "92763204f8f39f07",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1000",
+        "timeoutUnits": "milliseconds",
+        "rate": "10",
+        "nbRateUnits": "",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 730.0619812011719,
+        "y": 369.43807220458984,
+        "wires": [
+            [
+                "bf11563c.ace6a8",
+                "44a6394c.f6aa3"
+            ]
+        ]
+    },
+    {
+        "id": "c2910042.6ab208",
+        "type": "template",
+        "z": "92763204f8f39f07",
+        "name": "Define Artifact State",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{payload.location}}{{payload.speed}}",
+        "x": 1719.6808471679688,
+        "y": 341.0761947631836,
+        "wires": [
+            [
+                "8e31f3d4ae32c63e"
+            ]
+        ]
+    },
+    {
+        "id": "33f24608.d4b3aa",
+        "type": "function",
+        "z": "92763204f8f39f07",
+        "name": "Set metadata",
+        "func": "msg.trucknumber = msg.payload.trucknumber;\nmsg.timestamp = msg.payload.timestamp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 647.4905395507812,
+        "y": 204.57140350341797,
+        "wires": [
+            [
+                "2b747e79.0e5c32"
+            ]
+        ]
+    },
+    {
+        "id": "41c9a4cd.f08de4",
+        "type": "rbe",
+        "z": "92763204f8f39f07",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "x": 1625.6334075927734,
+        "y": 491.4285659790039,
+        "wires": [
+            [
+                "c2910042.6ab208"
+            ]
+        ]
+    },
+    {
+        "id": "8e31f3d4ae32c63e",
+        "type": "function",
+        "z": "92763204f8f39f07",
+        "name": "Build REST call for data",
+        "func": "msg.payload = { name: 'Truck', value: msg.payload, timestamp: msg.timestamp } ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1930,
+        "y": 440,
+        "wires": [
+            [
+                "1130f1d3d4d0a836",
+                "e94a7f07.89c508"
+            ]
+        ]
+    },
+    {
+        "id": "1130f1d3d4d0a836",
+        "type": "http request",
+        "z": "92763204f8f39f07",
+        "name": "Update info model",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "query",
+        "url": "http://paso:8083/api/updateInfoModel",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 2070,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36ceea13f5f651e0",
+        "type": "link call",
+        "z": "92763204f8f39f07",
+        "name": "",
+        "links": [
+            "e4e5d9e7b4ce9079"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 630,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dd82537cd3114775",
+        "type": "link in",
+        "z": "92763204f8f39f07",
+        "name": "LogData",
+        "links": [],
+        "x": 235,
+        "y": 160,
+        "wires": [
+            [
+                "36ceea13f5f651e0",
+                "6534f2326d9992a1"
+            ]
+        ]
+    },
+    {
+        "id": "bfb8aedd1fd26d45",
+        "type": "delay",
+        "z": "92763204f8f39f07",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 390,
+        "y": 200,
+        "wires": [
+            [
+                "ad2d5852.ca2d68"
+            ]
+        ]
+    },
+    {
+        "id": "648136387fe15471",
+        "type": "switch",
+        "z": "92763204f8f39f07",
+        "name": "",
+        "property": "payload.pathid",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "pathid",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 770,
+        "y": 120,
+        "wires": [
+            [
+                "33f24608.d4b3aa"
+            ]
+        ]
+    },
+    {
+        "id": "6534f2326d9992a1",
+        "type": "file in",
+        "z": "92763204f8f39f07",
+        "name": "loadLogFile",
+        "filename": "logFile",
+        "filenameType": "msg",
+        "format": "utf8",
+        "allProps": false,
+        "x": 270,
+        "y": 320,
+        "wires": [
+            [
+                "bfb8aedd1fd26d45"
+            ]
+        ]
+    },
+    {
+        "id": "f7e0ecf89cff2159",
+        "type": "http request",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "Reset engine",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://paso:8083/api/reset",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 300,
+        "y": 260,
+        "wires": [
+            [
+                "eab33af36882cfb1",
+                "ef5c6ade6fae23fe"
+            ]
+        ]
+    },
+    {
+        "id": "6ce5a212d970d0a7",
+        "type": "function",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "Build REST call for event",
+        "func": "msg.payload = { name: 'process_started', value: ''};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1090,
+        "y": 320,
+        "wires": [
+            [
+                "3442e982c3938147"
+            ]
+        ]
+    },
+    {
+        "id": "3442e982c3938147",
+        "type": "http request",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "Update info model",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "query",
+        "url": "http://paso:8083/api/updateInfoModel",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1370,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e4e5d9e7b4ce9079",
+        "type": "link in",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "InitModel",
+        "links": [],
+        "x": 175,
+        "y": 180,
+        "wires": [
+            [
+                "f7e0ecf89cff2159",
+                "df8d0c5f40829c30"
+            ]
+        ]
+    },
+    {
+        "id": "df8d0c5f40829c30",
+        "type": "http request",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "Reset goal model",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://istar-monitor:8082/api/reset",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 360,
+        "wires": [
+            [
+                "882f5d4382d6647a"
+            ]
+        ]
+    },
+    {
+        "id": "eab33af36882cfb1",
+        "type": "file in",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "egsm",
+        "filename": "egsmModel",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 550,
+        "y": 160,
+        "wires": [
+            [
+                "7830e04692e7790a"
+            ]
+        ]
+    },
+    {
+        "id": "ef5c6ade6fae23fe",
+        "type": "file in",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "infoModel",
+        "filename": "infoModel",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "ae2bd51fe8dbce5c"
+            ]
+        ]
+    },
+    {
+        "id": "507f08847b39bec8",
+        "type": "http request",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "submit",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://paso:8083/api/uploadModel",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "multipart/form-data",
+                "valueValue": ""
+            }
+        ],
+        "x": 1290,
+        "y": 220,
+        "wires": [
+            [
+                "6ce5a212d970d0a7"
+            ]
+        ]
+    },
+    {
+        "id": "cf177a3689d96c09",
+        "type": "function",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "",
+        "func": "msg.headers = {\n    \"content-type\" : 'multipart/form-data'\n    };\nlet databuffer = msg.payload;\n\nmsg.payload = {\n    \"egsm\": {\n        \"value\": databuffer.egsm,\n        \"options\": {\n            \"filename\": \"myfile.xml\"\n        }\n    },\n    \"infoModel\": {\n        \"value\": databuffer.infoModel,\n        \"options\": {\n            \"filename\": \"myfile.xsd\"\n        }\n    }\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1140,
+        "y": 220,
+        "wires": [
+            [
+                "507f08847b39bec8"
+            ]
+        ]
+    },
+    {
+        "id": "7830e04692e7790a",
+        "type": "change",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "egsm",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 810,
+        "y": 160,
+        "wires": [
+            [
+                "debbf8c7c9875696"
+            ]
+        ]
+    },
+    {
+        "id": "ae2bd51fe8dbce5c",
+        "type": "change",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "infoModel",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 810,
+        "y": 280,
+        "wires": [
+            [
+                "debbf8c7c9875696"
+            ]
+        ]
+    },
+    {
+        "id": "debbf8c7c9875696",
+        "type": "join",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": true,
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 990,
+        "y": 220,
+        "wires": [
+            [
+                "cf177a3689d96c09"
+            ]
+        ]
+    },
+    {
+        "id": "882f5d4382d6647a",
+        "type": "file in",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "goalModel",
+        "filename": "goalModel",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 570,
+        "y": 360,
+        "wires": [
+            [
+                "307685b8cf1916ad"
+            ]
+        ]
+    },
+    {
+        "id": "307685b8cf1916ad",
+        "type": "http request",
+        "z": "d2f1e88c6eb8c50a",
+        "name": "submit",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://istar-monitor:8082/api/loadModel",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/xml",
+                "valueValue": ""
+            }
+        ],
+        "x": 790,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    }
+]

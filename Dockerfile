@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8082
 
 # Start the Vite development server
-CMD ["node", "main"]
+CMD ["node", "main" ]
