@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://org.eclipse.bpmn2/ext" xmlns:xs="http://www.w3.org/2001/XMLSchema" id="Definitions_1" targetNamespace="http://org.eclipse.bpmn2/default/process" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.1.1">
+  <bpmn2:process id="shipment_lhr_ams" name="Default Process" isExecutable="false">
+    <bpmn2:startEvent id="lhr_ams_leg_started" name="lhr_ams leg started">
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+      <bpmn2:dataOutput id="DataOutput_3" name="output1" />
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_6">
+        <bpmn2:sourceRef>DataOutput_3</bpmn2:sourceRef>
+        <bpmn2:targetRef>Truck</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="OutputSet_10" name="Output Set 10">
+        <bpmn2:dataOutputRefs>DataOutput_3</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+      <bpmn2:messageEventDefinition id="MessageEventDefinition_1" />
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="lhr_ams_leg_started" targetRef="LoadContainer" />
+    <bpmn2:endEvent id="lhr_ams_leg_ended" name="lhr_ams leg ended">
+      <bpmn2:incoming>SequenceFlow_9</bpmn2:incoming>
+      <bpmn2:dataInput id="DataInput_3" name="input1" />
+      <bpmn2:dataInputAssociation id="DataInputAssociation_6">
+        <bpmn2:sourceRef>Truck</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_3</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:inputSet id="InputSet_10" name="Input Set 10">
+        <bpmn2:dataInputRefs>DataInput_3</bpmn2:dataInputRefs>
+      </bpmn2:inputSet>
+      <bpmn2:messageEventDefinition id="MessageEventDefinition_2" />
+    </bpmn2:endEvent>
+    <bpmn2:task id="LoadContainer" name="LoadContainer">
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_6">
+        <bpmn2:dataInput id="DataInput_1" name="input1" />
+        <bpmn2:dataOutput id="DataOutput_1" name="output1" />
+        <bpmn2:inputSet id="InputSet_6" name="Input Set 6">
+          <bpmn2:dataInputRefs>DataInput_1</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_6" name="Output Set 6">
+          <bpmn2:dataOutputRefs>DataOutput_1</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:property id="Property_11bmg57" name="__targetRef_placeholder" />
+      <bpmn2:dataInputAssociation id="DataInputAssociation_1">
+        <bpmn2:sourceRef>DataObjectReference_2</bpmn2:sourceRef>
+        <bpmn2:targetRef>Property_11bmg57</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>DataOutput_1</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_3</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:task id="TravelUK" name="TravelUK">
+      <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_7">
+        <bpmn2:dataInput id="DataInput_2" name="input1" />
+        <bpmn2:dataInput id="DataInput_4" name="input2" />
+        <bpmn2:dataOutput id="DataOutput_2" name="output1" />
+        <bpmn2:dataOutput id="DataOutput_4" name="output2" />
+        <bpmn2:inputSet id="InputSet_7" name="Input Set 7">
+          <bpmn2:dataInputRefs>DataInput_2</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_4</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_7" name="Output Set 7">
+          <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+          <bpmn2:dataOutputRefs>DataOutput_4</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:property id="Property_08p0pdw" name="__targetRef_placeholder" />
+      <bpmn2:dataInputAssociation id="DataInputAssociation_2">
+        <bpmn2:sourceRef>DataObjectReference_3</bpmn2:sourceRef>
+        <bpmn2:targetRef>Property_08p0pdw</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_4">
+        <bpmn2:sourceRef>DataObjectReference_6</bpmn2:sourceRef>
+        <bpmn2:targetRef>Property_08p0pdw</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_4">
+        <bpmn2:sourceRef>DataOutput_4</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_5</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_19">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_14</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:task id="TakeBreakUK" name="TakeBreakUK">
+      <bpmn2:incoming>SequenceFlow_13</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_9">
+        <bpmn2:dataInput id="DataInput_5" name="input1" />
+        <bpmn2:dataOutput id="DataOutput_5" name="output1" />
+        <bpmn2:dataOutput id="DataOutput_6" name="output2" />
+        <bpmn2:inputSet id="InputSet_9" name="Input Set 9">
+          <bpmn2:dataInputRefs>DataInput_5</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_9" name="Output Set 9">
+          <bpmn2:dataOutputRefs>DataOutput_5</bpmn2:dataOutputRefs>
+          <bpmn2:dataOutputRefs>DataOutput_6</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:property id="Property_0bixfc7" name="__targetRef_placeholder" />
+      <bpmn2:dataInputAssociation id="DataInputAssociation_5">
+        <bpmn2:sourceRef>DataObjectReference_5</bpmn2:sourceRef>
+        <bpmn2:targetRef>Property_0bixfc7</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_5">
+        <bpmn2:sourceRef>DataOutput_5</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_6</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_2">
+        <bpmn2:sourceRef>DataOutput_6</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_18</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:exclusiveGateway id="ExclusiveGateway_1" gatewayDirection="Converging">
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_7</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:exclusiveGateway id="ExclusiveGateway_2" gatewayDirection="Diverging">
+      <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_12</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_13</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="LoadContainer" targetRef="ExclusiveGateway_1" />
+    <bpmn2:sequenceFlow id="SequenceFlow_3" sourceRef="ExclusiveGateway_1" targetRef="TravelUK" />
+    <bpmn2:sequenceFlow id="SequenceFlow_4" sourceRef="TravelUK" targetRef="ExclusiveGateway_2" />
+    <bpmn2:sequenceFlow id="SequenceFlow_6" name="not ({infoModel./infoModel/Truck/status} == [AmsStill])" sourceRef="ExclusiveGateway_8" targetRef="TakeBreakEU" />
+    <bpmn2:sequenceFlow id="SequenceFlow_7" sourceRef="TakeBreakUK" targetRef="ExclusiveGateway_1" />
+    <bpmn2:dataObject id="Truck" name="Truck" />
+    <bpmn2:dataObjectReference id="DataObjectReference_2" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="LhrStill" name="LhrStill" />
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="DataObjectReference_3" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="LhrMoving" name="LhrMoving" />
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="DataObjectReference_4" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="AmsStill" name="AmsStill" />
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="DataObjectReference_5" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="HwGBStill" name="HwGBStill" />
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="DataObjectReference_6" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="HwGBMoving" name="HwGBMoving" />
+    </bpmn2:dataObjectReference>
+    <bpmn2:sequenceFlow id="SequenceFlow_9" name="{infoModel./infoModel/Truck/status} == [AmsStill]" sourceRef="ExclusiveGateway_8" targetRef="lhr_ams_leg_ended" />
+    <bpmn2:task id="TakeChannelTunnel" name="TakeChannelTunnel">
+      <bpmn2:incoming>SequenceFlow_12</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_11</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_15">
+        <bpmn2:dataInput id="DataInput_12" name="input1" />
+        <bpmn2:dataOutput id="DataOutput_13" name="output1" />
+        <bpmn2:dataOutput id="DataOutput_14" name="output2" />
+        <bpmn2:inputSet id="InputSet_16" name="Input Set 16">
+          <bpmn2:dataInputRefs>DataInput_12</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_16" name="Output Set 16">
+          <bpmn2:dataOutputRefs>DataOutput_13</bpmn2:dataOutputRefs>
+          <bpmn2:dataOutputRefs>DataOutput_14</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:property id="Property_0ii5jdb" name="__targetRef_placeholder" />
+      <bpmn2:dataInputAssociation id="DataInputAssociation_14">
+        <bpmn2:sourceRef>DataObjectReference_14</bpmn2:sourceRef>
+        <bpmn2:targetRef>Property_0ii5jdb</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_15">
+        <bpmn2:sourceRef>DataOutput_13</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_15</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_16">
+        <bpmn2:sourceRef>DataOutput_14</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_16</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:task id="TravelEU" name="TravelEU">
+      <bpmn2:incoming>SequenceFlow_10</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_14">
+        <bpmn2:dataInput id="DataInput_13" name="input1" />
+        <bpmn2:dataOutput id="DataOutput_12" name="output1" />
+        <bpmn2:dataOutput id="DataOutput_15" name="output2" />
+        <bpmn2:inputSet id="InputSet_15" name="Input Set 15">
+          <bpmn2:dataInputRefs>DataInput_13</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_15" name="Output Set 15">
+          <bpmn2:dataOutputRefs>DataOutput_12</bpmn2:dataOutputRefs>
+          <bpmn2:dataOutputRefs>DataOutput_15</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:property id="Property_1upb9ei" name="__targetRef_placeholder" />
+      <bpmn2:dataInputAssociation id="DataInputAssociation_15">
+        <bpmn2:sourceRef>DataObjectReference_18</bpmn2:sourceRef>
+        <bpmn2:targetRef>Property_1upb9ei</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_14">
+        <bpmn2:sourceRef>DataOutput_12</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_4</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_17">
+        <bpmn2:sourceRef>DataOutput_15</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_17</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:task id="TakeBreakEU" name="TakeBreakEU">
+      <bpmn2:incoming>SequenceFlow_6</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_16">
+        <bpmn2:dataInput id="DataInput_14" name="input1" />
+        <bpmn2:dataOutput id="DataOutput_16" name="output1" />
+        <bpmn2:inputSet id="InputSet_17" name="Input Set 17">
+          <bpmn2:dataInputRefs>DataInput_14</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_17" name="Output Set 17">
+          <bpmn2:dataOutputRefs>DataOutput_16</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:property id="Property_0h8o7bo" name="__targetRef_placeholder" />
+      <bpmn2:dataInputAssociation id="DataInputAssociation_16">
+        <bpmn2:sourceRef>DataObjectReference_17</bpmn2:sourceRef>
+        <bpmn2:targetRef>Property_0h8o7bo</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_18">
+        <bpmn2:sourceRef>DataOutput_16</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObjectReference_18</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:exclusiveGateway id="ExclusiveGateway_7" gatewayDirection="Converging">
+      <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_11</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_10</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:exclusiveGateway id="ExclusiveGateway_8" gatewayDirection="Diverging">
+      <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_6</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_9</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:sequenceFlow id="SequenceFlow_5" sourceRef="TravelEU" targetRef="ExclusiveGateway_8" />
+    <bpmn2:sequenceFlow id="SequenceFlow_8" sourceRef="TakeBreakEU" targetRef="ExclusiveGateway_7" />
+    <bpmn2:sequenceFlow id="SequenceFlow_10" sourceRef="ExclusiveGateway_7" targetRef="TravelEU" />
+    <bpmn2:sequenceFlow id="SequenceFlow_11" sourceRef="TakeChannelTunnel" targetRef="ExclusiveGateway_7" />
+    <bpmn2:sequenceFlow id="SequenceFlow_12" name="({infoModel./infoModel/Truck/status} == [ChrStill]) or ({infoModel./infoModel/Truck/status} == [HwMoving])" sourceRef="ExclusiveGateway_2" targetRef="TakeChannelTunnel" />
+    <bpmn2:sequenceFlow id="SequenceFlow_13" name="not (({infoModel./infoModel/Truck/status} == [ChrStill]) or ({infoModel./infoModel/Truck/status} == [HwMoving]))" sourceRef="ExclusiveGateway_2" targetRef="TakeBreakUK" />
+    <bpmn2:dataObjectReference id="DataObjectReference_14" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="ChrStill" name="ChrStill" />
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="DataObjectReference_15" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="CoqStill" name="CoqStill" />
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="DataObjectReference_16" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="CoqMoving" name="CoqMoving" />
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="DataObjectReference_17" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="HwStill" name="HwStill" />
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="DataObjectReference_18" name="Truck" dataObjectRef="Truck">
+      <bpmn2:dataState id="HwMoving" name="HwMoving" />
+    </bpmn2:dataObjectReference>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1" name="Default Process Diagram">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="shipment_lhr_ams">
+      <bpmndi:BPMNShape id="BPMNShape_1" bpmnElement="lhr_ams_leg_started">
+        <dc:Bounds x="170" y="255" width="36" height="36" />
+        <bpmndi:BPMNLabel id="BPMNLabel_1" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds x="159" y="291" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_2" bpmnElement="lhr_ams_leg_ended">
+        <dc:Bounds x="1670" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel id="BPMNLabel_3" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds x="1658" y="298" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_LoadContainer" bpmnElement="LoadContainer">
+        <dc:Bounds x="275" y="255" width="110" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_4" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds x="282" y="271" width="96" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_TravelUK" bpmnElement="TravelUK">
+        <dc:Bounds x="536" y="206" width="110" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_5" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds x="551" y="222" width="79" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_TakeBreakUK" bpmnElement="TakeBreakUK">
+        <dc:Bounds x="536" y="350" width="110" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_7" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds x="544" y="358" width="93" height="34" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_1" bpmnElement="ExclusiveGateway_1" isMarkerVisible="true">
+        <dc:Bounds x="415" y="255" width="50" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_8" labelStyle="BPMNLabelStyle_1" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_2" bpmnElement="ExclusiveGateway_2" isMarkerVisible="true">
+        <dc:Bounds x="685" y="255" width="50" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_9" labelStyle="BPMNLabelStyle_1" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_1" bpmnElement="DataObjectReference_2">
+        <dc:Bounds x="270" y="100" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_18">
+          <dc:Bounds x="274" y="150" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_2" bpmnElement="DataObjectReference_3">
+        <dc:Bounds x="384" y="100" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_19">
+          <dc:Bounds x="388" y="150" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_3" bpmnElement="DataObjectReference_4">
+        <dc:Bounds x="1519" y="90" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_20">
+          <dc:Bounds x="1523" y="140" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_4" bpmnElement="DataObjectReference_5">
+        <dc:Bounds x="730" y="410" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_21">
+          <dc:Bounds x="734" y="460" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_5" bpmnElement="DataObjectReference_6">
+        <dc:Bounds x="434" y="420" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_22">
+          <dc:Bounds x="438" y="470" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_TakeChannelTunnel" bpmnElement="TakeChannelTunnel" isExpanded="true">
+        <dc:Bounds x="830" y="255" width="110" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_6" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds x="836" y="263" width="98" height="34" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_TravelEU" bpmnElement="TravelEU" isExpanded="true">
+        <dc:Bounds x="1150" y="175" width="110" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_13" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds x="1165" y="191" width="79" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_TakeBreakEU" bpmnElement="TakeBreakEU" isExpanded="true">
+        <dc:Bounds x="1130" y="382" width="110" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_16" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds x="1138" y="390" width="93" height="34" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_7" bpmnElement="ExclusiveGateway_7" isMarkerVisible="true">
+        <dc:Bounds x="1020" y="255" width="50" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_28" labelStyle="BPMNLabelStyle_1" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_8" bpmnElement="ExclusiveGateway_8" isMarkerVisible="true">
+        <dc:Bounds x="1330" y="255" width="50" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_35" labelStyle="BPMNLabelStyle_1" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_14" bpmnElement="DataObjectReference_14">
+        <dc:Bounds x="772" y="132" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_42">
+          <dc:Bounds x="776" y="182" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_15" bpmnElement="DataObjectReference_15">
+        <dc:Bounds x="940" y="150" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_43">
+          <dc:Bounds x="944" y="200" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_16" bpmnElement="DataObjectReference_16">
+        <dc:Bounds x="940" y="382" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_44">
+          <dc:Bounds x="944" y="432" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_17" bpmnElement="DataObjectReference_17">
+        <dc:Bounds x="1470" y="420" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_45">
+          <dc:Bounds x="1474" y="470" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObjectReference_18" bpmnElement="DataObjectReference_18">
+        <dc:Bounds x="1080" y="462" width="36" height="50" />
+        <bpmndi:BPMNLabel id="BPMNLabel_46">
+          <dc:Bounds x="1084" y="512" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_1" targetElement="BPMNShape_LoadContainer">
+        <di:waypoint x="206" y="273" />
+        <di:waypoint x="240" y="273" />
+        <di:waypoint x="240" y="280" />
+        <di:waypoint x="275" y="280" />
+        <bpmndi:BPMNLabel id="BPMNLabel_2" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataInputAssociation_1" bpmnElement="DataInputAssociation_1">
+        <di:waypoint x="306" y="125" />
+        <di:waypoint x="330" y="125" />
+        <di:waypoint x="330" y="255" />
+        <bpmndi:BPMNLabel id="BPMNLabel_23" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_1" bpmnElement="DataOutputAssociation_1">
+        <di:waypoint x="385" y="271" />
+        <di:waypoint x="396" y="271" />
+        <di:waypoint x="396" y="150" />
+        <bpmndi:BPMNLabel id="BPMNLabel_24" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataInputAssociation_2" bpmnElement="DataInputAssociation_2">
+        <di:waypoint x="408" y="150" />
+        <di:waypoint x="408" y="222" />
+        <di:waypoint x="536" y="222" />
+        <bpmndi:BPMNLabel id="BPMNLabel_25" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataInputAssociation_4" bpmnElement="DataInputAssociation_4">
+        <di:waypoint x="452" y="420" />
+        <di:waypoint x="452" y="338" />
+        <di:waypoint x="591" y="338" />
+        <di:waypoint x="591" y="256" />
+        <bpmndi:BPMNLabel id="BPMNLabel_29" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_4" bpmnElement="DataOutputAssociation_4">
+        <di:waypoint x="646" y="243" />
+        <di:waypoint x="675" y="243" />
+        <di:waypoint x="675" y="426" />
+        <di:waypoint x="730" y="426" />
+        <bpmndi:BPMNLabel id="BPMNLabel_30" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_12" bpmnElement="DataOutputAssociation_19" sourceElement="BPMNShape_TravelUK" targetElement="BPMNShape_DataObjectReference_14">
+        <di:waypoint x="646" y="218" />
+        <di:waypoint x="784" y="218" />
+        <di:waypoint x="784" y="182" />
+        <bpmndi:BPMNLabel id="BPMNLabel_54" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataInputAssociation_5" bpmnElement="DataInputAssociation_5">
+        <di:waypoint x="730" y="443" />
+        <di:waypoint x="609" y="443" />
+        <di:waypoint x="609" y="400" />
+        <bpmndi:BPMNLabel id="BPMNLabel_31" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_5" bpmnElement="DataOutputAssociation_5">
+        <di:waypoint x="572" y="400" />
+        <di:waypoint x="572" y="445" />
+        <di:waypoint x="470" y="445" />
+        <bpmndi:BPMNLabel id="BPMNLabel_32" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_3" bpmnElement="DataOutputAssociation_2" sourceElement="BPMNShape_TakeBreakUK" targetElement="BPMNShape_DataObjectReference_18">
+        <di:waypoint x="618" y="400" />
+        <di:waypoint x="618" y="487" />
+        <di:waypoint x="1080" y="487" />
+        <bpmndi:BPMNLabel id="BPMNLabel_55" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_LoadContainer" targetElement="BPMNShape_ExclusiveGateway_1">
+        <di:waypoint x="385" y="280" />
+        <di:waypoint x="400" y="280" />
+        <di:waypoint x="415" y="280" />
+        <bpmndi:BPMNLabel id="BPMNLabel_10" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_ExclusiveGateway_1" targetElement="BPMNShape_TravelUK">
+        <di:waypoint x="440" y="255" />
+        <di:waypoint x="440" y="231" />
+        <di:waypoint x="536" y="231" />
+        <bpmndi:BPMNLabel id="BPMNLabel_11" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="BPMNShape_TravelUK" targetElement="BPMNShape_ExclusiveGateway_2">
+        <di:waypoint x="646" y="239" />
+        <di:waypoint x="710" y="239" />
+        <di:waypoint x="710" y="255" />
+        <bpmndi:BPMNLabel id="BPMNLabel_12" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_6" bpmnElement="SequenceFlow_6" sourceElement="BPMNShape_ExclusiveGateway_8" targetElement="BPMNShape_TakeBreakEU">
+        <di:waypoint x="1355" y="305" />
+        <di:waypoint x="1355" y="407" />
+        <di:waypoint x="1240" y="407" />
+        <bpmndi:BPMNLabel id="BPMNLabel_14">
+          <dc:Bounds x="1305" y="408" width="89" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="SequenceFlow_7" sourceElement="BPMNShape_TakeBreakUK" targetElement="BPMNShape_ExclusiveGateway_1">
+        <di:waypoint x="536" y="375" />
+        <di:waypoint x="440" y="375" />
+        <di:waypoint x="440" y="305" />
+        <bpmndi:BPMNLabel id="BPMNLabel_15" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="BPMNShape_ExclusiveGateway_8" targetElement="BPMNShape_2">
+        <di:waypoint x="1380" y="280" />
+        <di:waypoint x="1525" y="280" />
+        <di:waypoint x="1670" y="280" />
+        <bpmndi:BPMNLabel id="BPMNLabel_27">
+          <dc:Bounds x="1481" y="281" width="89" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataInputAssociation_8" bpmnElement="DataInputAssociation_14" sourceElement="BPMNShape_DataObjectReference_14" targetElement="BPMNShape_TakeChannelTunnel">
+        <di:waypoint x="790" y="182" />
+        <di:waypoint x="790" y="271" />
+        <di:waypoint x="830" y="271" />
+        <bpmndi:BPMNLabel id="BPMNLabel_47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_8" bpmnElement="DataOutputAssociation_15" sourceElement="BPMNShape_TakeChannelTunnel" targetElement="BPMNShape_DataObjectReference_15">
+        <di:waypoint x="940" y="271" />
+        <di:waypoint x="958" y="271" />
+        <di:waypoint x="958" y="200" />
+        <bpmndi:BPMNLabel id="BPMNLabel_48" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_9" bpmnElement="DataOutputAssociation_16" sourceElement="BPMNShape_TakeChannelTunnel" targetElement="BPMNShape_DataObjectReference_16">
+        <di:waypoint x="940" y="292" />
+        <di:waypoint x="958" y="292" />
+        <di:waypoint x="958" y="382" />
+        <bpmndi:BPMNLabel id="BPMNLabel_49" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataInputAssociation_9" bpmnElement="DataInputAssociation_15" sourceElement="BPMNShape_DataObjectReference_18" targetElement="BPMNShape_TravelEU">
+        <di:waypoint x="1080" y="478" />
+        <di:waypoint x="1070" y="478" />
+        <di:waypoint x="1070" y="352" />
+        <di:waypoint x="1186" y="352" />
+        <di:waypoint x="1186" y="225" />
+        <bpmndi:BPMNLabel id="BPMNLabel_50" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_2" bpmnElement="DataOutputAssociation_14">
+        <di:waypoint x="1260" y="191" />
+        <di:waypoint x="1537" y="191" />
+        <di:waypoint x="1537" y="140" />
+        <bpmndi:BPMNLabel id="BPMNLabel_26" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_10" bpmnElement="DataOutputAssociation_17" sourceElement="BPMNShape_TravelEU" targetElement="BPMNShape_DataObjectReference_17">
+        <di:waypoint x="1223" y="225" />
+        <di:waypoint x="1223" y="372" />
+        <di:waypoint x="1346" y="372" />
+        <di:waypoint x="1346" y="445" />
+        <di:waypoint x="1470" y="445" />
+        <bpmndi:BPMNLabel id="BPMNLabel_51" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataInputAssociation_10" bpmnElement="DataInputAssociation_16" sourceElement="BPMNShape_DataObjectReference_17" targetElement="BPMNShape_TakeBreakEU">
+        <di:waypoint x="1470" y="453" />
+        <di:waypoint x="1185" y="453" />
+        <di:waypoint x="1185" y="432" />
+        <bpmndi:BPMNLabel id="BPMNLabel_52" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_11" bpmnElement="DataOutputAssociation_18" sourceElement="BPMNShape_TakeBreakEU" targetElement="BPMNShape_DataObjectReference_18">
+        <di:waypoint x="1166" y="432" />
+        <di:waypoint x="1166" y="487" />
+        <di:waypoint x="1116" y="487" />
+        <bpmndi:BPMNLabel id="BPMNLabel_53" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="SequenceFlow_5" sourceElement="BPMNShape_TravelEU" targetElement="BPMNShape_ExclusiveGateway_8">
+        <di:waypoint x="1260" y="208" />
+        <di:waypoint x="1355" y="208" />
+        <di:waypoint x="1355" y="255" />
+        <bpmndi:BPMNLabel id="BPMNLabel_36" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="SequenceFlow_8" sourceElement="BPMNShape_TakeBreakEU" targetElement="BPMNShape_ExclusiveGateway_7">
+        <di:waypoint x="1130" y="407" />
+        <di:waypoint x="1045" y="407" />
+        <di:waypoint x="1045" y="305" />
+        <bpmndi:BPMNLabel id="BPMNLabel_37" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_10" bpmnElement="SequenceFlow_10" sourceElement="BPMNShape_ExclusiveGateway_7" targetElement="BPMNShape_TravelEU">
+        <di:waypoint x="1045" y="255" />
+        <di:waypoint x="1045" y="200" />
+        <di:waypoint x="1150" y="200" />
+        <bpmndi:BPMNLabel id="BPMNLabel_38" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_11" bpmnElement="SequenceFlow_11" sourceElement="BPMNShape_TakeChannelTunnel" targetElement="BPMNShape_ExclusiveGateway_7">
+        <di:waypoint x="940" y="280" />
+        <di:waypoint x="980" y="280" />
+        <di:waypoint x="1020" y="280" />
+        <bpmndi:BPMNLabel id="BPMNLabel_39" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_12" bpmnElement="SequenceFlow_12" sourceElement="BPMNShape_ExclusiveGateway_2" targetElement="BPMNShape_TakeChannelTunnel">
+        <di:waypoint x="735" y="280" />
+        <di:waypoint x="782" y="280" />
+        <di:waypoint x="830" y="280" />
+        <bpmndi:BPMNLabel id="BPMNLabel_40">
+          <dc:Bounds x="739" y="281" width="89" height="93" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_13" bpmnElement="SequenceFlow_13" sourceElement="BPMNShape_ExclusiveGateway_2" targetElement="BPMNShape_TakeBreakUK">
+        <di:waypoint x="710" y="305" />
+        <di:waypoint x="710" y="375" />
+        <di:waypoint x="646" y="375" />
+        <bpmndi:BPMNLabel id="BPMNLabel_41">
+          <dc:Bounds x="667" y="373" width="87" height="119" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">
+      <dc:Font name="arial" size="9" />
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
