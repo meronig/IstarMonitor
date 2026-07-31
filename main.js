@@ -6,11 +6,17 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var conf          = require('./config/conf');
 var app = express();
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
 app.use(express.static(__dirname));
 app.use(bodyParser.text({ type: 'application/xml' }));
 
 var nodes = {};
 var goalModel = {};
+var goalModelPath = conf.goalModelPath;
 
 const fulfillment = {
     UNKNOWN: 'unknown',
@@ -34,7 +40,7 @@ if(process.argv.length > 2){
     var inputPort = process.argv[2];
 }
 if(process.argv.length > 3) {
-	var goalModel = process.argv[3];
+	goalModelPath = process.argv[3];
 }
 
 // var inputPort = process.argv[2];
@@ -47,17 +53,11 @@ else{
   port = process.env.PORT || conf.port;
 }
 
-if(goalModel != undefined){
-    goalModelPath = goalModel;
-  }
-  else{
-    goalModelPath = conf.goalModelPath;
-  }
-  
 client.registerMethod("getEGSM", conf.engineEndpoint, "GET");
 
 app.get('/api/reset', function (req, res) {
     nodes = {};
+    console.log(conf.goalModelPath);
     readFile(goalModelPath);
     console.log("model resetted");
     res.end();
@@ -77,7 +77,7 @@ app.get('/api/getResultsAsFile', function (req, res) {
 
 
 app.get('/api/getStatus', function (req, res) {
-    res.end(JSON.stringify(nodes));
+    res.json(buildModelSnapshot());
 })
 
 app.get('/api/notifyStageOpened', function (req, res) {
@@ -108,10 +108,12 @@ app.post('/api/loadModel', function (req, res) {
             console.log('model parsed');
             goalModel = result;
             initTasksFromADOxx();
-            res.json(nodes); 
+            res.json(buildModelSnapshot()); 
         
     }); 
 });
+
+readFile(goalModelPath);
 
 var server = app.listen(port, function () {
   var port = server.address().port;
@@ -248,7 +250,11 @@ function isXor(stage){
 
 function readFile(mappingPath) {
     var parseString = xml2js.parseString;
-     parseString(fs.readFileSync(mappingPath, 'utf8'), function (err, result) {
+    parseString(fs.readFileSync(mappingPath, 'utf8'), function (err, result) {
+       if (err) {
+         console.error('Failed to parse goal model:', err);
+         return;
+       }
        console.log('model parsed');
        goalModel = result;
        initTasksFromADOxx();
@@ -266,6 +272,11 @@ function initTasksFromADOxx() {
         } else if (instances[la]['$'].class == "Goal"){
             nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.GOAL, children: [], decomposition: decomposition.UNKNOWN};
             //console.log(instances[la]['$'].name);
+        }
+        if (nodes[instances[la]['$'].name]){
+            nodes[instances[la]['$'].name].kind = instances[la]['$'].class;
+            nodes[instances[la]['$'].name].position = getAttributeValue(instances[la], 'Position');
+            nodes[instances[la]['$'].name].fulfillment = normalizeFulfillment(getAttributeValue(instances[la], 'State of fulfilment'));
         }
 	}
     //connect nodes through edges
@@ -285,6 +296,119 @@ function initTasksFromADOxx() {
         }
     }
     
+}
+
+function getAttributeValue(instance, attributeName) {
+    if (!instance || !instance.ATTRIBUTE) {
+        return '';
+    }
+
+    var attribute = instance.ATTRIBUTE.find(function (entry) {
+        return entry.$ && entry.$.name === attributeName;
+    });
+
+    return attribute ? (attribute._ || '') : '';
+}
+
+function getModelAttributeValue(model, attributeName) {
+    var attributes = model && model.MODELATTRIBUTES ? model.MODELATTRIBUTES : [];
+    var attributeEntry = null;
+
+    for (var i = 0; i < attributes.length; i++) {
+        var entries = attributes[i].ATTRIBUTE || [];
+        for (var j = 0; j < entries.length; j++) {
+            if (entries[j].$ && entries[j].$ .name === attributeName) {
+                attributeEntry = entries[j];
+                break;
+            }
+        }
+        if (attributeEntry) {
+            break;
+        }
+    }
+
+    return attributeEntry ? (attributeEntry._ || '') : '';
+}
+
+function parseWorldArea(worldAreaText) {
+    var match = (worldAreaText || '').match(/w:(-?\d+(?:\.\d+)?)cm\s+h:(-?\d+(?:\.\d+)?)cm/i);
+    if (!match) {
+        return { widthCm: 0, heightCm: 0 };
+    }
+
+    return {
+        widthCm: parseFloat(match[1]),
+        heightCm: parseFloat(match[2])
+    };
+}
+
+function normalizeFulfillment(value) {
+    var normalized = (value || '').toLowerCase();
+    if (normalized === 'satisfied') {
+        return fulfillment.SATISFIED;
+    }
+    if (normalized === 'denied') {
+        return fulfillment.DENIED;
+    }
+    return fulfillment.UNKNOWN;
+}
+
+function buildModelSnapshot() {
+    if (!goalModel || !goalModel['ADOXML'] || !goalModel['ADOXML']['MODELS'] || !goalModel['ADOXML']['MODELS'][0] || !goalModel['ADOXML']['MODELS'][0]['MODEL']) {
+        return {
+            instances: [],
+            connectors: []
+        };
+    }
+
+    var model = goalModel['ADOXML']['MODELS'][0]['MODEL'][0];
+    var worldArea = parseWorldArea(getModelAttributeValue(model, 'World area'));
+    console.log(worldArea);
+    var canvasWidth = Math.max(200, Math.round(worldArea.widthCm * 40));
+    var canvasHeight = Math.max(200, Math.round(worldArea.heightCm * 40));
+    var instances = (model.INSTANCE || []).map(function (instance) {
+        var name = instance.$.name;
+        var node = nodes[name] || {};
+        return {
+            id: instance.$.id,
+            name: name,
+            class: instance.$.class,
+            position: node.position || '',
+            fulfillment: node.fulfillment || fulfillment.UNKNOWN
+        };
+    });
+
+    var connectors = (model.CONNECTOR || [])
+        .map(function (connector) {
+            var from = connector.FROM && connector.FROM[0] && connector.FROM[0].$ ? connector.FROM[0].$ .instance : '';
+            var to = connector.TO && connector.TO[0] && connector.TO[0].$ ? connector.TO[0].$ .instance : '';
+            var decomposition = '';
+            var attributes = connector.ATTRIBUTE || [];
+            for (var a in attributes) {
+                if (attributes[a].$ && attributes[a].$ .name === 'Type of decomposition') {
+                    decomposition = attributes[a]._ || '';
+                    break;
+                }
+            }
+            return {
+                from: from,
+                to: to,
+                type: connector.$ ? connector.$.class : '',
+                decomposition: decomposition
+            };
+        })
+        .filter(function (connector) {
+            return connector.from && connector.to && connector.type !== 'Is inside';
+        });
+
+    return {
+        instances: instances,
+        connectors: connectors,
+        canvas: {
+            width: canvasWidth,
+            height: canvasHeight
+        }
+    };
 }
 
 function saveResultsToADOxx(){
