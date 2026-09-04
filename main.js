@@ -272,6 +272,18 @@ function initTasksFromADOxx() {
         } else if (instances[la]['$'].class == "Goal"){
             nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.GOAL, children: [], decomposition: decomposition.UNKNOWN};
             //console.log(instances[la]['$'].name);
+        } else if(instances[la]['$'].class == "Softgoal"){
+            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.TASK, children: [], decomposition: decomposition.UNKNOWN};
+            //console.log(instances[la]['$'].name);
+        } else if (instances[la]['$'].class == "Resource"){
+            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.TASK, children: [], decomposition: decomposition.UNKNOWN};
+            //console.log(instances[la]['$'].name);
+        } else if (instances[la]['$'].class == "Agent"){
+            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.TASK, children: [], decomposition: decomposition.UNKNOWN};
+            //console.log(instances[la]['$'].name);
+        } else if (instances[la]['$'].class == "Boundary"){
+            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.TASK, children: [], decomposition: decomposition.UNKNOWN};
+            //console.log(instances[la]['$'].name);
         }
         if (nodes[instances[la]['$'].name]){
             nodes[instances[la]['$'].name].kind = instances[la]['$'].class;
@@ -383,10 +395,14 @@ function buildModelSnapshot() {
             var from = connector.FROM && connector.FROM[0] && connector.FROM[0].$ ? connector.FROM[0].$ .instance : '';
             var to = connector.TO && connector.TO[0] && connector.TO[0].$ ? connector.TO[0].$ .instance : '';
             var decomposition = '';
+            var contribution = '';
             var attributes = connector.ATTRIBUTE || [];
             for (var a in attributes) {
                 if (attributes[a].$ && attributes[a].$ .name === 'Type of decomposition') {
                     decomposition = attributes[a]._ || '';
+                    break;
+                } else if (attributes[a].$ && attributes[a].$ .name === 'Type of contribution') {
+                    contribution = attributes[a]._ || '';
                     break;
                 }
             }
@@ -394,7 +410,8 @@ function buildModelSnapshot() {
                 from: from,
                 to: to,
                 type: connector.$ ? connector.$.class : '',
-                decomposition: decomposition
+                decomposition: decomposition,
+                contribution: contribution
             };
         })
         .filter(function (connector) {

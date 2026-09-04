@@ -15,7 +15,7 @@
 
         .link {
             fill: none;
-            stroke: #999;
+            stroke: #333;
             stroke-width: 2px;
         }
     </style>
@@ -43,6 +43,20 @@
             return {
                 x: parseFloat(match[1]) * positionScale,
                 y: parseFloat(match[2]) * positionScale
+            };
+        }
+
+        function parseSizeAndPosition(positionText) {
+            const match = positionText?.match(/NODE\s+x:(-?\d+(?:\.\d+)?)cm\s+y:(-?\d+(?:\.\d+)?)cm\s+w:(-?\d+(?:\.\d+)?)cm\s+h:(-?\d+(?:\.\d+)?)cm/i);
+            if (!match) {
+                return null;
+            }
+
+            return {
+                x: parseFloat(match[1]) * positionScale,
+                y: parseFloat(match[2]) * positionScale,
+                w: parseFloat(match[3]) * positionScale,
+                h: parseFloat(match[4]) * positionScale
             };
         }
 
@@ -101,57 +115,175 @@
                     return;
                 }
 
-                const position = parsePosition(instance.position);
-                nodes.set(name, {
-                    name,
-                    kind: instance.class,
-                    fulfillment: normalizeFulfillment(instance.fulfillment),
-                    position: position || { x: 100, y: 100 }
-                });
-            });
+                const kind = instance.class;
 
-            const links = Array.isArray(modelData?.connectors) ? modelData.connectors : [];
-            const childCountByNode = new Map([...nodes.keys()].map((name) => [name, 0]));
-            links.forEach((link) => {
-                const currentCount = childCountByNode.get(link.to) || 0;
-                childCountByNode.set(link.to, currentCount + 1);
-            });
-
-            const decompositionByNode = new Map();
-            links.forEach((link) => {
-                if (!decompositionByNode.has(link.to) && link.type === "Decomposition Link") {
-                    decompositionByNode.set(link.to, link.decomposition || "unknown");
+                if (["Goal", "Resource", "Softgoal", "Task"].includes(kind)) {
+                    const position = parsePosition(instance.position);
+                    nodes.set(name, {
+                        name,
+                        kind: instance.class,
+                        fulfillment: normalizeFulfillment(instance.fulfillment),
+                        position: position || { x: 100, y: 100 }
+                    });
+                } else {
+                    const sizeAndPosition = parseSizeAndPosition(instance.position);
+                    nodes.set(name, {
+                        name,
+                        kind: instance.class,
+                        fulfillment: normalizeFulfillment(instance.fulfillment),
+                        position: sizeAndPosition || { x: 100, y: 100, w: 100, h: 50 }
+                    });
                 }
             });
 
-            group.append("g")
-                .selectAll("path")
-                .data(links)
-                .join("path")
-                .attr("class", "link")
+            const links = Array.isArray(modelData?.connectors) ? modelData.connectors : [];
+            
+            // Create separate layers in the requested back-to-front order:
+            // Boundary, Agent, Links, Goals, Tasks, Resources, Softgoals
+
+            const allNodes = [...nodes.values()];
+
+            // Boundary layer
+            const boundaryGroups = group.append("g").attr("class", "layer boundary-layer")
+                .selectAll("g.node.boundary")
+                .data(allNodes.filter(n => n.kind === "Boundary"))
+                .join("g")
+                .attr("class", "node boundary")
+                .attr("transform", (node) => `translate(${node.position.x}, ${node.position.y})`);
+
+            boundaryGroups.append("ellipse")
+                .attr("cx", 0)
+                .attr("cy", 0)
+                .attr("rx", (node) => node.position.w / 2)
+                .attr("ry", (node) => node.position.h / 2)
+                .attr("fill", "#F0F0F0");
+
+            // Actor layer
+            const actorGroups = group.append("g").attr("class", "layer actor-layer")
+                .selectAll("g.node.actor")
+                .data(allNodes.filter(n => n.kind === "Actor" || n.kind === "Agent" || n.kind === "Role"))
+                .join("g")
+                .attr("class", "node actor")
+                .attr("transform", (node) => `translate(${node.position.x}, ${node.position.y})`);
+
+            actorGroups.append("circle")
+                .attr("cx", 0)
+                .attr("cy", 0)
+                .attr("r", nodeSize.height)
+                .attr("fill", "#909090");
+
+            actorGroups.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", -5)
+                .text((node) => node.name);
+
+            // Contribution link layer
+            const contributionLinkGroups = group.append("g")
+                .attr("class", "layer links-layer")
+                .selectAll("g.link.contribution")
+                .data(links.filter(link => link.type === "Contribution Link"))
+                .join("g")
+                .attr("class", "link contribution");
+
+            contributionLinkGroups.append("path")
+                .attr("id", (link, i) => `contribution-link-${i}`)
                 .attr("d", (link) => {
                     const source = nodes.get(link.from)?.position;
                     const target = nodes.get(link.to)?.position;
+
                     if (!source || !target) {
                         return "";
                     }
-                    return `M ${source.x} ${source.y} L ${target.x} ${target.y}`;
-                })
-                .attr("marker-end", "url(#arrow)");
 
-            const nodeGroups = group.append("g")
-                .selectAll("g.node")
-                .data([...nodes.values()].map((node) => ({
-                    ...node,
-                    children: childCountByNode.get(node.name) || 0,
-                    decomposition: decompositionByNode.get(node.name) || "unknown"
-                })))
+                    return `M ${source.x} ${source.y} L ${target.x} ${target.y}`;
+                });
+                
+            //  .attr("marker-end", "url(#arrow)");
+
+            contributionLinkGroups.append("text")
+                .append("textPath")
+                .attr("href", (link, i) => `#contribution-link-${i}`)
+                .attr("startOffset", "50%")
+                .attr("text-anchor", "middle")
+                .attr("stroke", "none")
+                .attr("fill", "black")
+                .text((link) => `(${link.contribution || "unknown"})`);
+
+            // Decomposition link layer
+            const decompositionLinkGroups = group.append("g")
+                .attr("class", "layer links-layer")
+                .selectAll("g.link.decomposition")
+                .data(links.filter(link => link.type === "Decomposition Link"))
                 .join("g")
-                .attr("class", "node")
+                .attr("class", "link decomposition")
+                
+            decompositionLinkGroups.append("path")
+                .attr("id", (link, i) => `decomposition-link-${i}`)
+                .attr("d", (link) => {
+                    const source = nodes.get(link.from)?.position;
+                    const target = nodes.get(link.to)?.position;
+
+                    console.log(link);
+
+                    if (!source || !target) {
+                        return "";
+                    }
+
+                    return `M ${source.x} ${source.y} L ${target.x} ${target.y}`;
+                });
+            //  .attr("marker-end", "url(#arrow)");
+
+            decompositionLinkGroups.append("text")
+                .append("textPath")
+                .attr("href", (link, i) => `#decomposition-link-${i}`)
+                .attr("startOffset", "50%")
+                .attr("text-anchor", "middle")
+                .attr("stroke", "none")
+                .attr("fill", "black")
+                .text((link) => `(${link.decomposition || "unknown"})`);
+
+            // Dependency link layer
+            const dependencyLinkGroups = group.append("g")
+                .attr("class", "layer links-layer")
+                .selectAll("g.link.dependency")
+                .data(links.filter(link => link.type === "Dependency Link"))
+                .join("g")
+                .attr("class", "link dependency")
+                
+            dependencyLinkGroups.append("path")
+                .attr("id", (link, i) => `dependency-link-${i}`)
+                .attr("d", (link) => {
+                    const source = nodes.get(link.from)?.position;
+                    const target = nodes.get(link.to)?.position;
+
+                    console.log(link);
+
+                    if (!source || !target) {
+                        return "";
+                    }
+
+                    return `M ${source.x} ${source.y} L ${target.x} ${target.y}`;
+                });
+            //  .attr("marker-end", "url(#arrow)");
+
+            dependencyLinkGroups.append("text")
+                .append("textPath")
+                .attr("href", (link, i) => `#dependency-link-${i}`)
+                .attr("startOffset", "50%")
+                .attr("text-anchor", "middle")
+                .attr("stroke", "none")
+                .attr("fill", "black")
+                .text("D");
+
+            // Goal layer
+            const goalGroups = group.append("g").attr("class", "layer goal-layer")
+                .selectAll("g.node.goal")
+                .data(allNodes.filter(n => n.kind === "Goal"))
+                .join("g")
+                .attr("class", "node goal")
                 .attr("transform", (node) => `translate(${node.position.x}, ${node.position.y})`);
 
-            nodeGroups.filter((node) => node.children > 0)
-                .append("rect")
+            goalGroups.append("rect")
                 .attr("x", -nodeSize.width / 2)
                 .attr("y", -nodeSize.height / 2)
                 .attr("width", nodeSize.width)
@@ -160,8 +292,25 @@
                 .attr("ry", 10)
                 .attr("fill", (node) => getNodeColor(node.fulfillment));
 
-            nodeGroups.filter((node) => node.children === 0)
-                .append("path")
+            goalGroups.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", -5)
+                .text((node) => node.name);
+
+            goalGroups.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", 15)
+                .text((node) => `(${node.fulfillment})`);
+
+            // Task layer
+            const taskGroups = group.append("g").attr("class", "layer task-layer")
+                .selectAll("g.node.task")
+                .data(allNodes.filter(n => n.kind === "Task"))
+                .join("g")
+                .attr("class", "node task")
+                .attr("transform", (node) => `translate(${node.position.x}, ${node.position.y})`);
+
+            taskGroups.append("path")
                 .attr("d", (node) => {
                     const textLength = node.name.length * 7;
                     const size = Math.max(textLength / 2, 40);
@@ -179,21 +328,83 @@
                 })
                 .attr("fill", (node) => getNodeColor(node.fulfillment));
 
-            nodeGroups.append("text")
+            taskGroups.append("text")
                 .attr("text-anchor", "middle")
                 .attr("dy", -5)
                 .text((node) => node.name);
 
-            nodeGroups.append("text")
+            taskGroups.append("text")
                 .attr("text-anchor", "middle")
                 .attr("dy", 15)
                 .text((node) => `(${node.fulfillment})`);
 
-            nodeGroups.filter((node) => node.children > 0)
-                .append("text")
+            // Resource layer
+            const resourceGroups = group.append("g").attr("class", "layer resource-layer")
+                .selectAll("g.node.resource")
+                .data(allNodes.filter(n => n.kind === "Resource"))
+                .join("g")
+                .attr("class", "node resource")
+                .attr("transform", (node) => `translate(${node.position.x}, ${node.position.y})`);
+
+            resourceGroups.append("rect")
+                .attr("x", -nodeSize.width / 2)
+                .attr("y", -nodeSize.height / 2)
+                .attr("width", nodeSize.width)
+                .attr("height", nodeSize.height)
+                .attr("fill", (node) => getNodeColor(node.fulfillment));
+
+            resourceGroups.append("text")
                 .attr("text-anchor", "middle")
-                .attr("dy", 30)
-                .text((node) => node.decomposition);
+                .attr("dy", -5)
+                .text((node) => node.name);
+
+            resourceGroups.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", 15)
+                .text((node) => `(${node.fulfillment})`);
+
+            // Softgoal layer (frontmost)
+            const softgoalGroups = group.append("g").attr("class", "layer softgoal-layer")
+                .selectAll("g.node.softgoal")
+                .data(allNodes.filter(n => n.kind === "Softgoal"))
+                .join("g")
+                .attr("class", "node softgoal")
+                .attr("transform", (node) => `translate(${node.position.x}, ${node.position.y})`);
+
+            softgoalGroups.append("rect")
+                .attr("x", -nodeSize.width / 2)
+                .attr("y", -nodeSize.height / 2)
+                .attr("width", nodeSize.width)
+                .attr("height", nodeSize.height)
+                .attr("rx", 30)
+                .attr("ry", 30)
+                .attr("fill", (node) => getNodeColor(node.fulfillment));
+
+            softgoalGroups.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", -5)
+                .text((node) => node.name);
+
+            softgoalGroups.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", 15)
+                .text((node) => `(${node.fulfillment})`);
+
+            // Optional: decomposition text for nodes that have children
+            const decompositionNodes = allNodes.filter(n => n.children > 0);
+            if (decompositionNodes.length > 0) {
+                const decompGroups = group.append("g").attr("class", "layer decomposition-layer")
+                    .selectAll("g.node.decomp")
+                    .data(decompositionNodes)
+                    .join("g")
+                    .attr("class", "node decomp")
+                    .attr("transform", (node) => `translate(${node.position.x}, ${node.position.y})`);
+
+                decompGroups.append("text")
+                    .attr("text-anchor", "middle")
+                    .attr("dy", 30)
+                    .text((node) => node.decomposition);
+            }
 
             document.getElementById("jsonContainer").textContent = `Rendered ${nodes.size} nodes from ${apiUrl}`;
         }
