@@ -15,18 +15,24 @@ app.use(express.static(__dirname));
 app.use(bodyParser.text({ type: 'application/xml' }));
 
 var nodes = {};
+var connectors = {};
 var goalModel = {};
 var goalModelPath = conf.goalModelPath;
 
 const fulfillment = {
     UNKNOWN: 'unknown',
     SATISFIED: 'satisfied',
-    DENIED: 'denied'
+    DENIED: 'denied',
+    CONFLICT: 'conflict'
 }
 
 const nodeType = {
     GOAL: 'goal',
-    TASK: 'task'
+    TASK: 'task',
+    QUALITY: 'quality',
+    RESOURCE: 'resource',
+    AGENT: 'agent',
+    BOUNDARY: 'boundary'
 }
 
 const decomposition = {
@@ -139,7 +145,7 @@ function parseEGSMModel(egsm,stageName,open){
             if (nodes[stageName].fulfillment!=fulfillment.SATISFIED){
                 console.log('stage ' + stageName + ' set to ' + fulfillment.SATISFIED);
                 nodes[stageName].fulfillment=fulfillment.SATISFIED;
-                propagate(stageName);
+                //propagate(stageName);
             }
         // stage is composite
         } else {
@@ -176,7 +182,7 @@ function markStage(stage,value){
             if(nodes[substages[s].name].fulfillment==fulfillment.UNKNOWN){
                 console.log('stage ' + substages[s].name + ' set to ' + fulfillment.DENIED);
                 nodes[substages[s].name].fulfillment=fulfillment.DENIED;
-                propagate(substages[s].name);
+                //propagate(substages[s].name);
             }
         }
     }
@@ -273,16 +279,16 @@ function initTasksFromADOxx() {
             nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.GOAL, children: [], decomposition: decomposition.UNKNOWN};
             //console.log(instances[la]['$'].name);
         } else if(instances[la]['$'].class == "Softgoal"){
-            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.TASK, children: [], decomposition: decomposition.UNKNOWN};
+            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.QUALITY, children: [], decomposition: decomposition.UNKNOWN};
             //console.log(instances[la]['$'].name);
         } else if (instances[la]['$'].class == "Resource"){
-            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.TASK, children: [], decomposition: decomposition.UNKNOWN};
+            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.RESOURCE, children: [], decomposition: decomposition.UNKNOWN};
             //console.log(instances[la]['$'].name);
-        } else if (instances[la]['$'].class == "Agent"){
-            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.TASK, children: [], decomposition: decomposition.UNKNOWN};
+        } else if (instances[la]['$'].class == "Agent" || instances[la]['$'].class == "Actor" || instances[la]['$'].class == "Role") {
+            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.AGENT, children: [], decomposition: decomposition.UNKNOWN};
             //console.log(instances[la]['$'].name);
         } else if (instances[la]['$'].class == "Boundary"){
-            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.TASK, children: [], decomposition: decomposition.UNKNOWN};
+            nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.BOUNDARY, children: [], decomposition: decomposition.UNKNOWN};
             //console.log(instances[la]['$'].name);
         }
         if (nodes[instances[la]['$'].name]){
@@ -305,6 +311,14 @@ function initTasksFromADOxx() {
                     nodes[connectors[c]['TO'][0]['$'].instance].decomposition = attributes[a]._
                 }
             }
+        }
+        if (connectors[c]['$'].class == 'Dependency Link') {
+            //console.log(nodes[connectors[c]['TO'][0]['$'].instance].children);
+            nodes[connectors[c]['FROM'][0]['$'].instance].children.push(connectors[c]['TO'][0]['$'].instance);
+        }
+        if (connectors[c]['$'].class == 'Contribution Link') {
+            //console.log(nodes[connectors[c]['FROM'][0]['$'].instance].children);
+            nodes[connectors[c]['TO'][0]['$'].instance].children.push(connectors[c]['FROM'][0]['$'].instance);
         }
     }
     
@@ -390,7 +404,7 @@ function buildModelSnapshot() {
         };
     });
 
-    var connectors = (model.CONNECTOR || [])
+    connectors = (model.CONNECTOR || [])
         .map(function (connector) {
             var from = connector.FROM && connector.FROM[0] && connector.FROM[0].$ ? connector.FROM[0].$ .instance : '';
             var to = connector.TO && connector.TO[0] && connector.TO[0].$ ? connector.TO[0].$ .instance : '';
@@ -418,6 +432,8 @@ function buildModelSnapshot() {
             return connector.from && connector.to && connector.type !== 'Is inside';
         });
 
+        propagateNew();
+
     return {
         instances: instances,
         connectors: connectors,
@@ -432,9 +448,10 @@ function saveResultsToADOxx(){
     var instances = goalModel['ADOXML']['MODELS'][0]['MODEL'][0]['INSTANCE']
     //store updated values for goals
     for (var la in instances){
+        console.log("updating " + instances[la]['$'].name + " to " + nodes[instances[la]['$'].name].fulfillment);
         if (nodes[instances[la]['$'].name] != null){
             for (at in instances[la]['ATTRIBUTE']) {
-                if(instances[la]['ATTRIBUTE'][at]['$'].name == "State of fulfillment"){
+                if (instances[la]['ATTRIBUTE'][at]['$'].name == "State of fulfilment"){
                     instances[la]['ATTRIBUTE'][at]._ = nodes[instances[la]['$'].name].fulfillment;
                 }
             }
@@ -454,21 +471,118 @@ function saveResultsToADOxx(){
     return xml;
 }
 
+function propagateNew(){
+    // Add task nodes to the list of processed nodes
+    var processedNodes = new Set();
+    for (var n in nodes) {
+        if (nodes[n].nodeType === nodeType.TASK) {
+            processedNodes.add(n);
+        }
+    }
+
+    console.log("Initial processed nodes (tasks):", Array.from(processedNodes));
+
+    // For all nodes, if they are not processed, check if all their children are processed. If so, derive fulfillment and mark as processed.
+    var allProcessed = false;
+    while (!allProcessed) {
+        allProcessed = true;
+        for (var n in nodes) {
+            if (!processedNodes.has(n)) {
+                var allChildrenProcessed = nodes[n].children.every(child => processedNodes.has(child));
+                if (allChildrenProcessed) {
+                    deriveFulfillmentForRefinement(n);
+                    deriveFulfillmentForDependency(n);
+                    deriveFulfillmentForContribution(n);
+                    processedNodes.add(n);
+                } else {
+                    allProcessed = false;
+                }
+            }
+        }
+    }
+}
+
+function deriveFulfillmentForDependency(node) {
+    // We assume that only one dependency link can exist for a node. Also, we ignore the value of the node.
+    // If we want to lift this assumption, a conflict resolution strategy should be implemented.
+    for (var c in connectors) {
+        if (connectors[c].type == 'Dependency Link' && connectors[c].from == node) {
+            if (nodes[connectors[c].to].fulfillment == fulfillment.DENIED) {
+                nodes[node].fulfillment = fulfillment.DENIED;
+            } else if (nodes[connectors[c].to].fulfillment == fulfillment.UNKNOWN) {
+                nodes[node].fulfillment = fulfillment.UNKNOWN;
+            } else if (nodes[connectors[c].to].fulfillment == fulfillment.SATISFIED) {
+                nodes[node].fulfillment = fulfillment.SATISFIED;
+            }
+        }
+    }
+}
+
+function deriveFulfillmentForContribution(node) {
+    // We assume that the node has no dependency link
+        
+    if (!(nodes[node].nodeType == nodeType.QUALITY)) {
+        return;
+    }
+
+    unknown = 0;
+    satisfied = 0;
+    denied = 0;
+    for (var c in connectors) {
+        if (connectors[c].type == 'Contribution Link' && connectors[c].to == node) {
+            if (nodes[connectors[c].from].fulfillment == fulfillment.UNKNOWN) {
+                    unknown++;
+            } else {
+                if (connectors[c].contribution == 'Make' || connectors[c].contribution == 'Help') {
+                    if (nodes[connectors[c].from].fulfillment == fulfillment.DENIED) {
+                        denied++;
+                    } else if (nodes[connectors[c].from].fulfillment == fulfillment.SATISFIED) {
+                        satisfied++;
+                    }
+                } else {
+                    if (nodes[connectors[c].from].fulfillment == fulfillment.DENIED) {
+                        satisfied++;
+                    } else if (nodes[connectors[c].from].fulfillment == fulfillment.SATISFIED) {
+                        denied++;
+                    }
+                }
+            }
+        }
+    }
+
+    // console.log('node ' + node);
+    // console.log('decomposition ' + nodes[node].decomposition);
+    // console.log('satisfied = ' + satisfied);
+    // console.log('denied = ' + denied);
+    // console.log('unknown = ' + unknown);
+    // console.log();
+
+    if (denied > 0 && satisfied > 0) {
+        nodes[node].fulfillment = fulfillment.CONFLICT;
+    } else if (unknown > 0) {
+        nodes[node].fulfillment = fulfillment.UNKNOWN;
+    } else if (satisfied > 0) {
+        nodes[node].fulfillment = fulfillment.SATISFIED;
+    } else {
+        nodes[node].fulfillment = fulfillment.DENIED;
+    }
+
+}
+
 function propagate(task){
     for (var n in nodes){
         if(nodes[n].children.includes(task)){
             //compute fulfillment
-            deriveFulfillment(n);
+            deriveFulfillmentForRefinement(n);
             propagate(n);
         }
     }
 }
 
-function deriveFulfillment(task) {
+function deriveFulfillmentForRefinement(task) {
     unknown = 0;
     satisfied = 0;
     denied = 0;
-    console.log(nodes[task]);
     for (var c in nodes[task].children){
         if (nodes[nodes[task].children[c]].fulfillment == fulfillment.SATISFIED){
             satisfied++;
@@ -478,12 +592,12 @@ function deriveFulfillment(task) {
             denied++;
         }
     }
-    console.log('node ' + task);
-    console.log('decomposition ' + nodes[task].decomposition);
-    console.log('satisfied = ' + satisfied);
-    console.log('denied = ' + denied);
-    console.log('unknown = ' + unknown);
-    console.log();
+    // console.log('node ' + task);
+    // console.log('decomposition ' + nodes[task].decomposition);
+    // console.log('satisfied = ' + satisfied);
+    // console.log('denied = ' + denied);
+    // console.log('unknown = ' + unknown);
+    // console.log();
 
     if (nodes[task].decomposition == decomposition.AND){
         if (denied == 0 && unknown == 0){

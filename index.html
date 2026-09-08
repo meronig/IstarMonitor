@@ -68,6 +68,9 @@
             if (normalized === "denied") {
                 return "denied";
             }
+            if (normalized === "conflict") {
+                return "conflict";
+            }
             return "unknown";
         }
 
@@ -77,6 +80,9 @@
             }
             if (fulfillment === "denied") {
                 return "#FF2000";
+            }
+            if (fulfillment === "conflict") {
+                return "#00CCFF";
             }
             return "#FFCC00";
         }
