@@ -1,9 +1,13 @@
 {
+  "name": "IstarMonitor",
+  "version": "1.0.0",
+  "description": "IstarMonitor - I-star 2.0 goal monitoring engine",
+  "author": "Giovanni Meroni <giovanni.meroni@uninsubria.it>",
+  "main": "main.js",
   "dependencies": {
     "body-parser": "^1.20.3",
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
-    "node-red": "^4.0.5",
     "node-rest-client": "^3.1.1",
     "xml2js": "^0.6.2"
   }

@@ -11,7 +11,7 @@ PASO E-GSM process monitoring engine: https://bitbucket.org/polimiisgroup/egsmen
 ```
 git clone https://bitbucket.org/polimiisgroup/egsmengine.git
 cd egsmengine
-docker-compose create
+docker-compose build
 ```
 
 * Clone this repository, generate and deploy Docker images:
@@ -19,8 +19,7 @@ docker-compose create
 ```
 git clone https://github.com/meronig/IstarMonitor.git
 cd IstarMonitor
-docker-compose create
-docker-compose start
+docker-compose up
 ```
 
 * With a web browser, go to the following URLs using different windows or tabs:
