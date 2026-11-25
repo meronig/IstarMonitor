@@ -5,6 +5,7 @@ var client = new Client();
 var express = require('express');
 var bodyParser = require('body-parser')
 var conf          = require('./config/conf');
+const { firstCharLowerCase } = require('xml2js/lib/processors');
 var app = express();
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -106,7 +107,6 @@ app.get('/api/notifyStageClosed', function (req, res) {
 
 app.post('/api/loadModel', function (req, res) { 
     const xml = req.body;
-    console.log(req.body);
     xml2js.parseString(xml, function (err, result) {
             if (err) { 
                 return res.status(400).send('Invalid XML format'); 
@@ -129,6 +129,7 @@ var server = app.listen(port, function () {
 function parseEGSMModel(egsm,stageName,open){
 
     //stage is open
+    var changed = false;
     var stage = locate(egsm,stageName);
     if(open){
         // check for skipped stages, and mark atomic stages inside them as denied
@@ -136,7 +137,9 @@ function parseEGSMModel(egsm,stageName,open){
             var substages = getSubStages(egsm[s]);
             for (var ss in substages){
                 if (substages[ss].compliance == "skipped"){
-                    markStage(substages[ss],fulfillment.DENIED);
+                    if (markStage(substages[ss],fulfillment.DENIED)){
+                        changed = true;
+                    }
                 }
             }
         }
@@ -145,7 +148,7 @@ function parseEGSMModel(egsm,stageName,open){
             if (nodes[stageName].fulfillment!=fulfillment.SATISFIED){
                 console.log('stage ' + stageName + ' set to ' + fulfillment.SATISFIED);
                 nodes[stageName].fulfillment=fulfillment.SATISFIED;
-                //propagate(stageName);
+                changed = true;
             }
         // stage is composite
         } else {
@@ -157,7 +160,9 @@ function parseEGSMModel(egsm,stageName,open){
                     for(var s in stage.sub_stages){
                         for(var pfg in stage.sub_stages[s].processGuards){
                             if(stage.sub_stages[s].processGuards[pfg].value == false){
-                                markStage(stage.sub_stages[s],fulfillment.DENIED);
+                                if (markStage(stage.sub_stages[s],fulfillment.DENIED)){
+                                    changed = true;
+                                }
                             }
                         }
                     }
@@ -170,22 +175,29 @@ function parseEGSMModel(egsm,stageName,open){
         if(!isInsideLoop(egsm,stage) && isLoop(stage)){
             console.log(stage.name + " is a loop");
             //mark atomic stages inside loop as denied, if not already satisfied
-            markStage(stage.sub_stages[0],fulfillment.DENIED);
+            if (markStage(stage.sub_stages[0],fulfillment.DENIED)){
+                changed = true;
+            }
         }
+    }
+    if (changed) {
+        propagateNew();
     }
 }
 
 function markStage(stage,value){
+    var changed = false;
     var substages = getSubStages(stage);
     for(var s in substages){
         if(nodes[substages[s].name]!=undefined){
             if(nodes[substages[s].name].fulfillment==fulfillment.UNKNOWN){
                 console.log('stage ' + substages[s].name + ' set to ' + fulfillment.DENIED);
                 nodes[substages[s].name].fulfillment=fulfillment.DENIED;
-                //propagate(substages[s].name);
+                changed = true;
             }
         }
     }
+    return changed;
 }
 
 function getSubStages(stage){
@@ -274,27 +286,23 @@ function initTasksFromADOxx() {
     for (var la in instances){
 		if(instances[la]['$'].class == "Task"){
             nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.TASK, children: [], decomposition: decomposition.UNKNOWN};
-            //console.log(instances[la]['$'].name);
         } else if (instances[la]['$'].class == "Goal"){
             nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.GOAL, children: [], decomposition: decomposition.UNKNOWN};
-            //console.log(instances[la]['$'].name);
         } else if(instances[la]['$'].class == "Softgoal"){
             nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.QUALITY, children: [], decomposition: decomposition.UNKNOWN};
-            //console.log(instances[la]['$'].name);
         } else if (instances[la]['$'].class == "Resource"){
             nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.RESOURCE, children: [], decomposition: decomposition.UNKNOWN};
-            //console.log(instances[la]['$'].name);
         } else if (instances[la]['$'].class == "Agent" || instances[la]['$'].class == "Actor" || instances[la]['$'].class == "Role") {
             nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.AGENT, children: [], decomposition: decomposition.UNKNOWN};
-            //console.log(instances[la]['$'].name);
         } else if (instances[la]['$'].class == "Boundary"){
             nodes[instances[la]['$'].name] = {fulfillment: fulfillment.UNKNOWN, nodeType: nodeType.BOUNDARY, children: [], decomposition: decomposition.UNKNOWN};
-            //console.log(instances[la]['$'].name);
         }
         if (nodes[instances[la]['$'].name]){
             nodes[instances[la]['$'].name].kind = instances[la]['$'].class;
             nodes[instances[la]['$'].name].position = getAttributeValue(instances[la], 'Position');
             nodes[instances[la]['$'].name].fulfillment = normalizeFulfillment(getAttributeValue(instances[la], 'State of fulfilment'));
+            nodes[instances[la]['$'].name].satisfied = false;
+            nodes[instances[la]['$'].name].denied = false;
         }
 	}
     //connect nodes through edges
@@ -302,22 +310,18 @@ function initTasksFromADOxx() {
 
     for (var c in connectors){
         if (connectors[c]['$'].class == 'Decomposition Link') {
-            //console.log(nodes[connectors[c]['FROM'][0]['$'].instance].children);
             nodes[connectors[c]['TO'][0]['$'].instance].children.push(connectors[c]['FROM'][0]['$'].instance);
             var attributes = connectors[c]['ATTRIBUTE'];
             for (var a in attributes) {
                 if(attributes[a]['$'].name == 'Type of decomposition') {
-                    //console.log(attributes[a]._);
                     nodes[connectors[c]['TO'][0]['$'].instance].decomposition = attributes[a]._
                 }
             }
         }
         if (connectors[c]['$'].class == 'Dependency Link') {
-            //console.log(nodes[connectors[c]['TO'][0]['$'].instance].children);
             nodes[connectors[c]['FROM'][0]['$'].instance].children.push(connectors[c]['TO'][0]['$'].instance);
         }
         if (connectors[c]['$'].class == 'Contribution Link') {
-            //console.log(nodes[connectors[c]['FROM'][0]['$'].instance].children);
             nodes[connectors[c]['TO'][0]['$'].instance].children.push(connectors[c]['FROM'][0]['$'].instance);
         }
     }
@@ -389,7 +393,6 @@ function buildModelSnapshot() {
 
     var model = goalModel['ADOXML']['MODELS'][0]['MODEL'][0];
     var worldArea = parseWorldArea(getModelAttributeValue(model, 'World area'));
-    console.log(worldArea);
     var canvasWidth = Math.max(200, Math.round(worldArea.widthCm * 40));
     var canvasHeight = Math.max(200, Math.round(worldArea.heightCm * 40));
     var instances = (model.INSTANCE || []).map(function (instance) {
@@ -400,7 +403,9 @@ function buildModelSnapshot() {
             name: name,
             class: instance.$.class,
             position: node.position || '',
-            fulfillment: node.fulfillment || fulfillment.UNKNOWN
+            fulfillment: node.fulfillment || fulfillment.UNKNOWN,
+            satisfied: node.satisfied || false,
+            denied: node.denied || false
         };
     });
 
@@ -408,6 +413,13 @@ function buildModelSnapshot() {
         .map(function (connector) {
             var from = connector.FROM && connector.FROM[0] && connector.FROM[0].$ ? connector.FROM[0].$ .instance : '';
             var to = connector.TO && connector.TO[0] && connector.TO[0].$ ? connector.TO[0].$ .instance : '';
+            // for dependency links, the relation is reversed
+            if (connector.$.class == 'Dependency Link') {
+                var temp = from;
+                from = to;
+                to = temp;
+            }
+
             var decomposition = '';
             var contribution = '';
             var attributes = connector.ATTRIBUTE || [];
@@ -432,7 +444,7 @@ function buildModelSnapshot() {
             return connector.from && connector.to && connector.type !== 'Is inside';
         });
 
-        propagateNew();
+    propagateNew();
 
     return {
         instances: instances,
@@ -472,156 +484,182 @@ function saveResultsToADOxx(){
 }
 
 function propagateNew(){
+
     // Add task nodes to the list of processed nodes
-    var processedNodes = new Set();
+    var pendingNodes = new Set();
     for (var n in nodes) {
         if (nodes[n].nodeType === nodeType.TASK) {
-            processedNodes.add(n);
+            pendingNodes.add(n);
         }
     }
+    console.log("Initial pending nodes (tasks):", Array.from(pendingNodes));
 
-    console.log("Initial processed nodes (tasks):", Array.from(processedNodes));
+    while (pendingNodes.size > 0) {
+        [first] = pendingNodes;
+        pendingNodes.delete(first);
+        var oldSatisfied = nodes[first].satisfied;
+        var oldDenied = nodes[first].denied;
+        propagateFulfillment(first);
+        enforceRefinementLinks(first);
+        enforceDependencyLinks(first);
+        enforceContributionLinks(first);
 
-    // For all nodes, if they are not processed, check if all their children are processed. If so, derive fulfillment and mark as processed.
-    var allProcessed = false;
-    while (!allProcessed) {
-        allProcessed = true;
-        for (var n in nodes) {
-            if (!processedNodes.has(n)) {
-                var allChildrenProcessed = nodes[n].children.every(child => processedNodes.has(child));
-                if (allChildrenProcessed) {
-                    deriveFulfillmentForRefinement(n);
-                    deriveFulfillmentForDependency(n);
-                    deriveFulfillmentForContribution(n);
-                    processedNodes.add(n);
-                } else {
-                    allProcessed = false;
+        console.log("Processed node:", first, "satisfied:", nodes[first].satisfied, "denied:", nodes[first].denied);
+
+        // values have changed
+        if (nodes[first].satisfied != oldSatisfied || nodes[first].denied != oldDenied) {
+            console.log("Node " + first + " changed: satisfied=" + nodes[first].satisfied + ", denied=" + nodes[first].denied);
+            // add to the set all target elements of current one
+            for (var c in connectors) {
+                if (connectors[c].from == first) {
+                    pendingNodes.add(connectors[c].to);
                 }
             }
         }
     }
+
+    deriveFulfillment();
 }
 
-function deriveFulfillmentForDependency(node) {
-    // We assume that only one dependency link can exist for a node. Also, we ignore the value of the node.
-    // If we want to lift this assumption, a conflict resolution strategy should be implemented.
-    for (var c in connectors) {
-        if (connectors[c].type == 'Dependency Link' && connectors[c].from == node) {
-            if (nodes[connectors[c].to].fulfillment == fulfillment.DENIED) {
-                nodes[node].fulfillment = fulfillment.DENIED;
-            } else if (nodes[connectors[c].to].fulfillment == fulfillment.UNKNOWN) {
-                nodes[node].fulfillment = fulfillment.UNKNOWN;
-            } else if (nodes[connectors[c].to].fulfillment == fulfillment.SATISFIED) {
-                nodes[node].fulfillment = fulfillment.SATISFIED;
-            }
+function deriveFulfillment() {
+    for (var n in nodes){
+        if (!nodes[n].satisfied && !nodes[n].denied) {
+            nodes[n].fulfillment = fulfillment.UNKNOWN;
+        } else if (nodes[n].satisfied && !nodes[n].denied) {
+            nodes[n].fulfillment = fulfillment.SATISFIED;
+        } else if (!nodes[n].satisfied && nodes[n].denied) {
+            nodes[n].fulfillment = fulfillment.DENIED;
+        } else {
+            nodes[n].fulfillment = fulfillment.CONFLICT;
         }
     }
 }
 
-function deriveFulfillmentForContribution(node) {
+// Maps to R1
+function propagateFulfillment(node){
+    if (!(nodes[node].nodeType == nodeType.TASK)) {
+        return;
+    }
+
+    if (nodes[node].fulfillment == fulfillment.UNKNOWN){
+        nodes[node].satisfied = false;
+        nodes[node].denied = false;
+    }
+
+    if (nodes[node].fulfillment == fulfillment.SATISFIED){
+        nodes[node].satisfied = true;
+        nodes[node].denied = false;
+    }
+
+    if (nodes[node].fulfillment == fulfillment.DENIED){
+        nodes[node].satisfied = false;
+        nodes[node].denied = true;
+    }
+
+    if (nodes[node].fulfillment == fulfillment.CONFLICT){
+        nodes[node].satisfied = true;
+        nodes[node].denied = true;
+    }
+}
+
+// Maps to R4 and R5
+function enforceDependencyLinks(node) {
+    // We assume that only one dependency link can exist for a node. Also, we ignore the value of the node.
+    for (var c in connectors) {
+        if (connectors[c].type == 'Dependency Link' && connectors[c].to == node) {
+            nodes[node].satisfied = nodes[connectors[c].from].satisfied;
+            nodes[node].denied = nodes[connectors[c].from].denied;
+        }
+    }
+}
+
+// Maps to R6
+function enforceContributionLinks(node) {
     // We assume that the node has no dependency link
         
     if (!(nodes[node].nodeType == nodeType.QUALITY)) {
         return;
     }
 
-    unknown = 0;
+    children = 0;
     satisfied = 0;
     denied = 0;
     for (var c in connectors) {
         if (connectors[c].type == 'Contribution Link' && connectors[c].to == node) {
-            if (nodes[connectors[c].from].fulfillment == fulfillment.UNKNOWN) {
-                    unknown++;
+            children++;
+            if (connectors[c].contribution == 'Make' || connectors[c].contribution == 'Help') {
+                if (nodes[connectors[c].from].satisfied) {
+                    satisfied++;
+                }
+                if (nodes[connectors[c].from].denied) {
+                    denied++;
+                }
             } else {
-                if (connectors[c].contribution == 'Make' || connectors[c].contribution == 'Help') {
-                    if (nodes[connectors[c].from].fulfillment == fulfillment.DENIED) {
-                        denied++;
-                    } else if (nodes[connectors[c].from].fulfillment == fulfillment.SATISFIED) {
-                        satisfied++;
-                    }
-                } else {
-                    if (nodes[connectors[c].from].fulfillment == fulfillment.DENIED) {
-                        satisfied++;
-                    } else if (nodes[connectors[c].from].fulfillment == fulfillment.SATISFIED) {
-                        denied++;
-                    }
+                if (nodes[connectors[c].from].satisfied) {
+                    denied++;
+                }
+                if (nodes[connectors[c].from].denied) {
+                    satisfied++;
                 }
             }
         }
     }
 
-    // console.log('node ' + node);
-    // console.log('decomposition ' + nodes[node].decomposition);
-    // console.log('satisfied = ' + satisfied);
-    // console.log('denied = ' + denied);
-    // console.log('unknown = ' + unknown);
-    // console.log();
+    if (children > 0) {
+        if (satisfied > 0) {
+            nodes[node].satisfied = true;
+        } else {
+            nodes[node].satisfied = false;
+        }
 
-    if (denied > 0 && satisfied > 0) {
-        nodes[node].fulfillment = fulfillment.CONFLICT;
-    } else if (unknown > 0) {
-        nodes[node].fulfillment = fulfillment.UNKNOWN;
-    } else if (satisfied > 0) {
-        nodes[node].fulfillment = fulfillment.SATISFIED;
-    } else {
-        nodes[node].fulfillment = fulfillment.DENIED;
-    }
-
-}
-
-function propagate(task){
-    for (var n in nodes){
-        if(nodes[n].children.includes(task)){
-            //compute fulfillment
-            deriveFulfillmentForRefinement(n);
-            propagate(n);
+        if (denied > 0) {
+            nodes[node].denied = true;
+        } else {
+            nodes[node].denied = false;
         }
     }
+
 }
 
-function deriveFulfillmentForRefinement(task) {
-    unknown = 0;
+// Maps to R2 and R3
+function enforceRefinementLinks(task) {
+
+    if (nodes[task].decomposition == decomposition.UNKNOWN) {
+        return;
+    }
+
     satisfied = 0;
     denied = 0;
     for (var c in nodes[task].children){
-        if (nodes[nodes[task].children[c]].fulfillment == fulfillment.SATISFIED){
+        if (nodes[nodes[task].children[c]].satisfied){
             satisfied++;
-        } else if (nodes[nodes[task].children[c]].fulfillment == fulfillment.UNKNOWN){
-            unknown++;
-        } else if (nodes[nodes[task].children[c]].fulfillment == fulfillment.DENIED){
+        } 
+        if (nodes[nodes[task].children[c]].denied){
             denied++;
         }
     }
-    // console.log('node ' + task);
-    // console.log('decomposition ' + nodes[task].decomposition);
-    // console.log('satisfied = ' + satisfied);
-    // console.log('denied = ' + denied);
-    // console.log('unknown = ' + unknown);
-    // console.log();
 
-    if (nodes[task].decomposition == decomposition.AND){
-        if (denied == 0 && unknown == 0){
-            nodes[task].fulfillment = fulfillment.SATISFIED;
-        } else if (denied > 0) {
-            nodes[task].fulfillment = fulfillment.DENIED;
+    if (nodes[task].decomposition == decomposition.AND) {
+        if (denied > 0){
+            nodes[task].denied = true;
         } else {
-            nodes[task].fulfillment = fulfillment.UNKNOWN;
+            nodes[task].denied = false;
         }
-    } else if (nodes[task].decomposition == decomposition.OR) {
-        if (satisfied == 0 && unknown == 0){
-            nodes[task].fulfillment = fulfillment.DENIED;
-        } else if (satisfied > 0) {
-            nodes[task].fulfillment = fulfillment.SATISFIED;
+        if (satisfied == nodes[task].children.length) {
+            nodes[task].satisfied = true;
         } else {
-            nodes[task].fulfillment = fulfillment.UNKNOWN;
+            nodes[task].satisfied = false;
         }
-    } else if (nodes[task].decomposition == decomposition.XOR) {
-        if(satisfied == 1 && unknown == 0) {
-            nodes[task].fulfillment = fulfillment.SATISFIED;
-        } else if (satisfied > 1 || (satisfied == 0 && unknown == 0)){
-            nodes[task].fulfillment = fulfillment.DENIED;
+    } else {
+        if (satisfied > 0){
+            nodes[task].satisfied = true;
         } else {
-            nodes[task].fulfillment = fulfillment.UNKNOWN;
+            nodes[task].satisfied = false;
+        }
+        if (denied == nodes[task].children.length) {
+            nodes[task].denied = true;
+        } else {
+            nodes[task].denied = false;
         }
     }
 

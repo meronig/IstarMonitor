@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE ADOXML SYSTEM "adoxml31.dtd">
-<ADOXML version="3.1" date="28.11.2024" time="16:36" database="adoxx18" username="Istar" adoversion="Version 1.8">
+<ADOXML version="3.1" date="25.11.2026" time="14:25" database="adoxx18" username="iStar" adoversion="Version 1.8">
 <MODELS>
-<MODEL id="mod.16601" name="bru-ams" version="" modeltype="Intentional actors and elements model" libtype="bp" applib="omilab_istar">
+<MODEL id="mod.14530" name="bru-ams-exp" version="" modeltype="Intentional actors and elements model" libtype="bp" applib="omilab_istar">
 <MODELATTRIBUTES>
 <ATTRIBUTE name="Version number" type="STRING"></ATTRIBUTE>
-<ATTRIBUTE name="Author" type="STRING">Istar</ATTRIBUTE>
-<ATTRIBUTE name="Creation date" type="STRING">28.11.2024, 16:22</ATTRIBUTE>
-<ATTRIBUTE name="Date last changed" type="STRING">28.11.2024, 16:31:22</ATTRIBUTE>
-<ATTRIBUTE name="Last user" type="STRING">Istar</ATTRIBUTE>
+<ATTRIBUTE name="Author" type="STRING">iStar</ATTRIBUTE>
+<ATTRIBUTE name="Creation date" type="STRING">25.11.2026, 13:41</ATTRIBUTE>
+<ATTRIBUTE name="Date last changed" type="STRING">25.11.2026, 14:25:35</ATTRIBUTE>
+<ATTRIBUTE name="Last user" type="STRING">iStar</ATTRIBUTE>
 <ATTRIBUTE name="Keywords" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Model type" type="ENUMERATION">Current model</ATTRIBUTE>
@@ -16,21 +16,21 @@
 <ATTRIBUTE name="Reviewed on" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Reviewed by" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
-<ATTRIBUTE name="Number of objects and relations" type="INTEGER">11</ATTRIBUTE>
-<ATTRIBUTE name="World area" type="STRING">w:28.65cm h:19.98cm minw:5cm minh:5cm</ATTRIBUTE>
+<ATTRIBUTE name="Number of objects and relations" type="INTEGER">49</ATTRIBUTE>
+<ATTRIBUTE name="World area" type="STRING">w:38.5cm h:30cm minw:5cm minh:5cm</ATTRIBUTE>
 <ATTRIBUTE name="Grid" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Zoom" type="INTEGER">100</ATTRIBUTE>
 <ATTRIBUTE name="Viewable area" type="STRING">VIEW representation:graphic
-GRAPHIC x:-16 y:-16 w:1554 h:1045 scale:1
+GRAPHIC x:-16 y:-16 w:2194 h:1285 scale:1
 TABLE
 </ATTRIBUTE>
 <ATTRIBUTE name="Current mode" type="STRING"></ATTRIBUTE>
-<ATTRIBUTE name="Base name" type="STRING">bru-ams</ATTRIBUTE>
+<ATTRIBUTE name="Base name" type="STRING">bru-ams-exp</ATTRIBUTE>
 <ATTRIBUTE name="Access state" type="ENUMERATION">write</ATTRIBUTE>
 <ATTRIBUTE name="Current page layout" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Connector marks" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Type" type="STRING">Intentional actors and elements model</ATTRIBUTE>
-<ATTRIBUTE name="Change counter" type="INTEGER">603</ATTRIBUTE>
+<ATTRIBUTE name="Change counter" type="INTEGER">5072</ATTRIBUTE>
 <ATTRIBUTE name="Font size" type="INTEGER">0</ATTRIBUTE>
 <ATTRIBUTE name="Context of version" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Position" type="STRING"></ATTRIBUTE>
@@ -77,10 +77,10 @@ cond
 <ATTRIBUTE name="Display modelling information" type="INTEGER">0</ATTRIBUTE>
 <ATTRIBUTE name="vm_lst_listOfVariants" type="LONGSTRING">Default</ATTRIBUTE>
 <ATTRIBUTE name="vm_str_activeVariant" type="STRING">Default</ATTRIBUTE>
-<ATTRIBUTE name="__GfxThumb__" type="LONGSTRING">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</ATTRIBUTE>
+<ATTRIBUTE name="__GfxThumb__" type="LONGSTRING">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</ATTRIBUTE>
 </MODELATTRIBUTES>
-<INSTANCE id="obj.16602" class="Task" name="Load">
-<ATTRIBUTE name="Position" type="STRING">NODE x:3.5cm y:9cm index:1</ATTRIBUTE>
+<INSTANCE id="obj.14531" class="Task" name="Load">
+<ATTRIBUTE name="Position" type="STRING">NODE x:2.5cm y:5cm index:12</ATTRIBUTE>
 <ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
 cond
@@ -98,7 +98,7 @@ cond
                 aval (VAL res, &quot;Fontcolor&quot;)
     ))
    )
-  )) val:&quot;black&quot;</ATTRIBUTE>
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Task)&quot;</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
 <ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:2cm y:9cm index:1</ATTRIBUTE>
 <ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
@@ -113,8 +113,8 @@ cond
 <ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
 <ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
 </INSTANCE>
-<INSTANCE id="obj.16605" class="Task" name="Drive">
-<ATTRIBUTE name="Position" type="STRING">NODE x:7.5cm y:9cm index:2</ATTRIBUTE>
+<INSTANCE id="obj.14537" class="Task" name="Drive">
+<ATTRIBUTE name="Position" type="STRING">NODE x:8cm y:16cm index:17</ATTRIBUTE>
 <ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
 cond
@@ -132,9 +132,9 @@ cond
                 aval (VAL res, &quot;Fontcolor&quot;)
     ))
    )
-  )) val:&quot;black&quot;</ATTRIBUTE>
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Task)&quot;</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
-<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:2.5cm y:9.5cm index:2</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:3cm y:10cm index:3</ATTRIBUTE>
 <ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
 <ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
@@ -147,8 +147,8 @@ cond
 <ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
 <ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
 </INSTANCE>
-<INSTANCE id="obj.16617" class="Task" name="Pause">
-<ATTRIBUTE name="Position" type="STRING">NODE x:11cm y:9cm index:6</ATTRIBUTE>
+<INSTANCE id="obj.14543" class="Task" name="Pause">
+<ATTRIBUTE name="Position" type="STRING">NODE x:13cm y:16cm index:19</ATTRIBUTE>
 <ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
 cond
@@ -166,9 +166,9 @@ cond
                 aval (VAL res, &quot;Fontcolor&quot;)
     ))
    )
-  )) val:&quot;black&quot;</ATTRIBUTE>
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Task)&quot;</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
-<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:4.5cm y:11.5cm index:6</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:4cm y:11cm index:5</ATTRIBUTE>
 <ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
 <ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
@@ -181,8 +181,8 @@ cond
 <ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
 <ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
 </INSTANCE>
-<INSTANCE id="obj.16620" class="Goal" name="ReliableDelivery">
-<ATTRIBUTE name="Position" type="STRING">NODE x:6cm y:5.5cm index:7</ATTRIBUTE>
+<INSTANCE id="obj.14549" class="Goal" name="Delivery provided">
+<ATTRIBUTE name="Position" type="STRING">NODE x:7.5cm y:12.5cm index:20</ATTRIBUTE>
 <ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
 cond
@@ -200,7 +200,7 @@ cond
                 aval (VAL res, &quot;Fontcolor&quot;)
     ))
    )
-  )) val:&quot;black&quot;</ATTRIBUTE>
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Goal)&quot;</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
 <ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:3.5cm y:5.5cm index:7</ATTRIBUTE>
 <ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
@@ -216,8 +216,8 @@ cond
 <ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
 <INTERREF name="Referenced goals"></INTERREF>
 </INSTANCE>
-<INSTANCE id="obj.16626" class="Goal" name="EmployeesWellBeing">
-<ATTRIBUTE name="Position" type="STRING">NODE x:11cm y:5.5cm index:9</ATTRIBUTE>
+<INSTANCE id="obj.14552" class="Goal" name="Mandatory breaks taken">
+<ATTRIBUTE name="Position" type="STRING">NODE x:13cm y:12.5cm index:21</ATTRIBUTE>
 <ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
 cond
@@ -235,7 +235,7 @@ cond
                 aval (VAL res, &quot;Fontcolor&quot;)
     ))
    )
-  )) val:&quot;black&quot;</ATTRIBUTE>
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Goal)&quot;</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
 <ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:19cm y:5.5cm index:9</ATTRIBUTE>
 <ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
@@ -251,8 +251,267 @@ cond
 <ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
 <INTERREF name="Referenced goals"></INTERREF>
 </INSTANCE>
-<INSTANCE id="obj.16629" class="Goal" name="GoodService">
-<ATTRIBUTE name="Position" type="STRING">NODE x:8.5cm y:2.5cm index:10</ATTRIBUTE>
+<INSTANCE id="obj.14555" class="Actor" name="Truck driver">
+<ATTRIBUTE name="Position" type="STRING">NODE x:2cm y:12.5cm w:1.76cm h:1.76cm index:24</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Actor)&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:2.5cm y:14.5cm w:1.76cm h:1.76cm index:20</ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">1</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Boundary lines" type="ENUMERATION">solid</ATTRIBUTE>
+<ATTRIBUTE name="Boundary" type="ENUMERATION">without</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Constraints" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Costs" type="DOUBLE">0</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Key actor" type="ENUMERATION">no</ATTRIBUTE>
+<ATTRIBUTE name="Main skills and competence" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of boundary" type="ENUMERATION">top right</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="Responsibility" type="STRING"></ATTRIBUTE>
+<INTERREF name="Referenced actor"></INTERREF>
+<ATTRIBUTE name="Display name and reference" type="ENUMERATION">no</ATTRIBUTE>
+</INSTANCE>
+<INSTANCE id="obj.14558" class="Actor" name="Logistics company">
+<ATTRIBUTE name="Position" type="STRING">NODE x:13cm y:2cm w:1.76cm h:1.76cm index:25</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Actor)&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:16.5cm y:16cm w:1.76cm h:1.76cm index:21</ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">1</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Boundary lines" type="ENUMERATION">solid</ATTRIBUTE>
+<ATTRIBUTE name="Boundary" type="ENUMERATION">without</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Constraints" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Costs" type="DOUBLE">0</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Key actor" type="ENUMERATION">no</ATTRIBUTE>
+<ATTRIBUTE name="Main skills and competence" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of boundary" type="ENUMERATION">top right</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="Responsibility" type="STRING"></ATTRIBUTE>
+<INTERREF name="Referenced actor"></INTERREF>
+<ATTRIBUTE name="Display name and reference" type="ENUMERATION">no</ATTRIBUTE>
+</INSTANCE>
+<INSTANCE id="obj.14561" class="Boundary" name="Boundary-13493">
+<ATTRIBUTE name="Position" type="STRING">NODE x:14.75cm y:3.75cm w:6.5cm h:5.5cm index:26</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(&quot;&quot;) val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:4cm y:15.5cm w:8cm h:8cm index:23</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_listOfVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="vm_str_activeVariant" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="_IntActorId_" type="EXPRESSION">EXPR val:&quot;14558&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="EXPRESSION">EXPR val:&quot;2009:01:02&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="EXPRESSION">EXPR val:&quot;2009:01:02&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Boundary lines" type="ENUMERATION">solid</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Constraints" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Costs" type="EXPRESSION">EXPR val:0</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Key actor" type="EXPRESSION">EXPR val:&quot;no&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Main skills and competence" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="EXPRESSION">EXPR val:0</ATTRIBUTE>
+<ATTRIBUTE name="Responsibility" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<INTERREF name="Associated intentional actor"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14564" class="Boundary" name="Boundary-13497">
+<ATTRIBUTE name="Position" type="STRING">NODE x:9.25cm y:14.5cm w:16cm h:7cm index:27</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(&quot;&quot;) val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:18cm y:17cm w:8cm h:8cm index:24</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_listOfVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="vm_str_activeVariant" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="_IntActorId_" type="EXPRESSION">EXPR val:&quot;14555&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="EXPRESSION">EXPR val:&quot;2009:01:02&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="EXPRESSION">EXPR val:&quot;2009:01:02&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Boundary lines" type="ENUMERATION">solid</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Constraints" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Costs" type="EXPRESSION">EXPR val:0</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Key actor" type="EXPRESSION">EXPR val:&quot;no&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Main skills and competence" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="EXPRESSION">EXPR val:0</ATTRIBUTE>
+<ATTRIBUTE name="Responsibility" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<INTERREF name="Associated intentional actor"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14567" class="Goal" name="Delivery outsourced">
+<ATTRIBUTE name="Position" type="STRING">NODE x:13cm y:4cm index:28</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Goal)&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:3.5cm y:15cm index:26</ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="State of fulfilment" type="ENUMERATION">na</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
+<INTERREF name="Referenced goals"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14570" class="Boundary" name="Boundary-13551">
+<ATTRIBUTE name="Position" type="STRING">NODE x:4cm y:4cm w:6.5cm h:6cm index:29</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(&quot;&quot;) val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:21cm y:7cm w:8cm h:8cm index:28</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_listOfVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="vm_str_activeVariant" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="_IntActorId_" type="EXPRESSION">EXPR val:&quot;14573&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="EXPRESSION">EXPR val:&quot;2009:01:02&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="EXPRESSION">EXPR val:&quot;2009:01:02&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Boundary lines" type="ENUMERATION">solid</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Constraints" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Costs" type="EXPRESSION">EXPR val:0</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Key actor" type="EXPRESSION">EXPR val:&quot;no&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Main skills and competence" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="EXPRESSION">EXPR val:0</ATTRIBUTE>
+<ATTRIBUTE name="Responsibility" type="EXPRESSION">EXPR val:&quot;&quot;</ATTRIBUTE>
+<INTERREF name="Associated intentional actor"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14573" class="Actor" name="Customer">
+<ATTRIBUTE name="Position" type="STRING">NODE x:1.5cm y:1.5cm w:1.76cm h:1.76cm index:30</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Actor)&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:18.5cm y:4cm w:1.76cm h:1.76cm index:29</ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">1</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Boundary lines" type="ENUMERATION">solid</ATTRIBUTE>
+<ATTRIBUTE name="Boundary" type="ENUMERATION">without</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Constraints" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Costs" type="DOUBLE">0</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Key actor" type="ENUMERATION">no</ATTRIBUTE>
+<ATTRIBUTE name="Main skills and competence" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of boundary" type="ENUMERATION">top right</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="Responsibility" type="STRING"></ATTRIBUTE>
+<INTERREF name="Referenced actor"></INTERREF>
+<ATTRIBUTE name="Display name and reference" type="ENUMERATION">no</ATTRIBUTE>
+</INSTANCE>
+<INSTANCE id="obj.14576" class="Goal" name="Delivery requested">
+<ATTRIBUTE name="Position" type="STRING">NODE x:5.5cm y:5cm index:31</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Goal)&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:20.5cm y:6.5cm index:30</ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="State of fulfilment" type="ENUMERATION">na</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
+<INTERREF name="Referenced goals"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14579" class="Goal" name="Delivery performed">
+<ATTRIBUTE name="Position" type="STRING">NODE x:7.5cm y:8cm index:13</ATTRIBUTE>
 <ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
 cond
@@ -272,7 +531,7 @@ cond
    )
   )) val:&quot;black&quot;</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
-<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:11.5cm y:1cm index:10</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
 <ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
 <ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
@@ -286,68 +545,540 @@ cond
 <ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
 <INTERREF name="Referenced goals"></INTERREF>
 </INSTANCE>
-<CONNECTOR id="con.16632" class="Decomposition Link">
-<FROM instance="Load" class="Task"></FROM>
-<TO instance="ReliableDelivery" class="Goal"></TO>
-<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:11</ATTRIBUTE>
+<INSTANCE id="obj.14582" class="Softgoal" name="Sustainability">
+<ATTRIBUTE name="Position" type="STRING">NODE x:16cm y:3cm index:32</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Softgoal)&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:10cm y:10.5cm index:34</ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
 <ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
-<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
-<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="State of fulfilment" type="ENUMERATION">na</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
+<INTERREF name="Referenced softgoals"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14585" class="Goal" name="Well-being regulations satisfied">
+<ATTRIBUTE name="Position" type="STRING">NODE x:13cm y:9cm index:14</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:&quot;black&quot;</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
-<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:11</ATTRIBUTE>
-<ATTRIBUTE name="Type of decomposition" type="ENUMERATION">AND</ATTRIBUTE>
-<ATTRIBUTE name="Flag" type="STRING">model</ATTRIBUTE>
-</CONNECTOR>
-<CONNECTOR id="con.16633" class="Decomposition Link">
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="State of fulfilment" type="ENUMERATION">na</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
+<INTERREF name="Referenced goals"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14588" class="Goal" name="Regulations satisfied">
+<ATTRIBUTE name="Position" type="STRING">NODE x:15cm y:5.5cm index:33</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Goal)&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:9.5cm y:12.5cm index:36</ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="State of fulfilment" type="ENUMERATION">na</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
+<INTERREF name="Referenced goals"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14591" class="Goal" name="Service performed">
+<ATTRIBUTE name="Position" type="STRING">NODE x:9.5cm y:2.5cm index:15</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:&quot;black&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="State of fulfilment" type="ENUMERATION">na</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
+<INTERREF name="Referenced goals"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14603" class="Goal" name="Container loaded">
+<ATTRIBUTE name="Position" type="STRING">NODE x:4.5cm y:16cm index:38</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Goal)&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:12cm y:24cm index:40</ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="State of fulfilment" type="ENUMERATION">na</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
+<INTERREF name="Referenced goals"></INTERREF>
+</INSTANCE>
+<INSTANCE id="obj.14606" class="Resource" name="Container">
+<ATTRIBUTE name="Position" type="STRING">NODE x:4cm y:9cm index:1</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:&quot;black&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="State of fulfilment" type="ENUMERATION">na</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
+</INSTANCE>
+<INSTANCE id="obj.14609" class="Goal" name="Shipment organized">
+<ATTRIBUTE name="Position" type="STRING">NODE x:4cm y:2cm index:40</ATTRIBUTE>
+<ATTRIBUTE name="External tool coupling" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="fontcolor" type="EXPRESSION">EXPR expr:(set(targets, ctobjs(&quot;Is inside&quot;)),
+cond
+  (tokcnt(targets,&quot; &quot;)=0,&quot;black&quot;,
+    (cond
+      (tokcnt(targets,&quot; &quot;)=1,aval (VAL ctobjs(&quot;Is inside&quot;), &quot;Fontcolor&quot;),
+    (
+    set(tk,token(targets,0,&quot; &quot;)),
+                set(t,VAL (copy(aval(VAL tk, &quot;Position&quot;),search(aval(VAL tk, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+    fortok(x,targets,&quot; &quot;,
+        (
+        set(c,VAL (copy(aval(VAL x, &quot;Position&quot;),search(aval(VAL x, &quot;Position&quot;),&quot;index&quot;,0)+6,-1))),
+        cond(c&gt;=t,(set(res,x),set(t,c)),&quot;&quot;)
+        )),
+                aval (VAL res, &quot;Fontcolor&quot;)
+    ))
+   )
+  )) val:error:&quot;[acoexpar-02] Attribute \&quot;Fontcolor\&quot; (Boundary) does not exist!  \&quot;fontcolor\&quot; (Goal)&quot;</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂNODE x:12.5cm y:9.5cm index:42</ATTRIBUTE>
+<ATTRIBUTE name="isDependable" type="STRING">0</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Font size" type="ENUMERATION">8</ATTRIBUTE>
+<ATTRIBUTE name="Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Representation of name" type="ENUMERATION">inside</ATTRIBUTE>
+<ATTRIBUTE name="State of fulfilment" type="ENUMERATION">na</ATTRIBUTE>
+<ATTRIBUTE name="Available from" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Available till" type="DATE">2009:01:02</ATTRIBUTE>
+<ATTRIBUTE name="Priority Order" type="INTEGER">0</ATTRIBUTE>
+<ATTRIBUTE name="Priority" type="ENUMERATION">no</ATTRIBUTE>
+<INTERREF name="Referenced goals"></INTERREF>
+</INSTANCE>
+<CONNECTOR id="con.14613" class="Decomposition Link">
 <FROM instance="Drive" class="Task"></FROM>
-<TO instance="ReliableDelivery" class="Goal"></TO>
-<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:12</ATTRIBUTE>
+<TO instance="Delivery provided" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:22</ATTRIBUTE>
 <ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
-<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:12</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:13</ATTRIBUTE>
 <ATTRIBUTE name="Type of decomposition" type="ENUMERATION">AND</ATTRIBUTE>
 <ATTRIBUTE name="Flag" type="STRING">model</ATTRIBUTE>
 </CONNECTOR>
-<CONNECTOR id="con.16637" class="Decomposition Link">
+<CONNECTOR id="con.14614" class="Decomposition Link">
 <FROM instance="Pause" class="Task"></FROM>
-<TO instance="EmployeesWellBeing" class="Goal"></TO>
-<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:16</ATTRIBUTE>
+<TO instance="Mandatory breaks taken" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:23</ATTRIBUTE>
 <ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
-<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:16</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:15</ATTRIBUTE>
+<ATTRIBUTE name="Type of decomposition" type="ENUMERATION">XOR</ATTRIBUTE>
+<ATTRIBUTE name="Flag" type="STRING">model</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14616" class="Is inside">
+<FROM instance="Drive" class="Task"></FROM>
+<TO instance="Boundary-13497" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14617" class="Is inside">
+<FROM instance="Mandatory breaks taken" class="Goal"></FROM>
+<TO instance="Boundary-13497" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14619" class="Is inside">
+<FROM instance="Delivery provided" class="Goal"></FROM>
+<TO instance="Boundary-13497" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14621" class="Is inside">
+<FROM instance="Pause" class="Task"></FROM>
+<TO instance="Boundary-13497" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14623" class="Is inside">
+<FROM instance="Logistics company" class="Actor"></FROM>
+<TO instance="Boundary-13493" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14624" class="Is inside">
+<FROM instance="Delivery outsourced" class="Goal"></FROM>
+<TO instance="Boundary-13493" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14625" class="Is inside">
+<FROM instance="Customer" class="Actor"></FROM>
+<TO instance="Boundary-13551" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14626" class="Is inside">
+<FROM instance="Delivery requested" class="Goal"></FROM>
+<TO instance="Boundary-13551" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14627" class="Is inside">
+<FROM instance="Truck driver" class="Actor"></FROM>
+<TO instance="Boundary-13497" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14628" class="Dependency Link">
+<FROM instance="Delivery outsourced" class="Goal"></FROM>
+<TO instance="Delivery performed" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:4</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Dependency strength" type="ENUMERATION">committed</ATTRIBUTE>
+<ATTRIBUTE name="Dependency validity" type="ENUMERATION">valid</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of dependency strength" type="ENUMERATION">start point</ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction (Model)" type="EXPRESSION">EXPR val:&quot;horizontal&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction" type="ENUMERATION">from left to right</ATTRIBUTE>
+<ATTRIBUTE name="Change modelling direction (global)" type="PROGRAMCALL">ITEM &quot;Change modelling direction (global)&quot; param:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Flag" type="STRING">script</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14629" class="Dependency Link">
+<FROM instance="Delivery performed" class="Goal"></FROM>
+<TO instance="Delivery provided" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:5</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Dependency strength" type="ENUMERATION">committed</ATTRIBUTE>
+<ATTRIBUTE name="Dependency validity" type="ENUMERATION">valid</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of dependency strength" type="ENUMERATION">start point</ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction (Model)" type="EXPRESSION">EXPR val:&quot;horizontal&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction" type="ENUMERATION">from left to right</ATTRIBUTE>
+<ATTRIBUTE name="Change modelling direction (global)" type="PROGRAMCALL">ITEM &quot;Change modelling direction (global)&quot; param:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Flag" type="STRING">model</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14630" class="Dependency Link">
+<FROM instance="Regulations satisfied" class="Goal"></FROM>
+<TO instance="Well-being regulations satisfied" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:6</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Dependency strength" type="ENUMERATION">committed</ATTRIBUTE>
+<ATTRIBUTE name="Dependency validity" type="ENUMERATION">valid</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of dependency strength" type="ENUMERATION">start point</ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction (Model)" type="EXPRESSION">EXPR val:&quot;horizontal&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction" type="ENUMERATION">from left to right</ATTRIBUTE>
+<ATTRIBUTE name="Change modelling direction (global)" type="PROGRAMCALL">ITEM &quot;Change modelling direction (global)&quot; param:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Flag" type="STRING">script</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14631" class="Dependency Link">
+<FROM instance="Well-being regulations satisfied" class="Goal"></FROM>
+<TO instance="Mandatory breaks taken" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:7</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Dependency strength" type="ENUMERATION">committed</ATTRIBUTE>
+<ATTRIBUTE name="Dependency validity" type="ENUMERATION">valid</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of dependency strength" type="ENUMERATION">start point</ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction (Model)" type="EXPRESSION">EXPR val:&quot;horizontal&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction" type="ENUMERATION">from left to right</ATTRIBUTE>
+<ATTRIBUTE name="Change modelling direction (global)" type="PROGRAMCALL">ITEM &quot;Change modelling direction (global)&quot; param:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Flag" type="STRING">script</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14632" class="Is inside">
+<FROM instance="Regulations satisfied" class="Goal"></FROM>
+<TO instance="Boundary-13493" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14633" class="Dependency Link">
+<FROM instance="Delivery requested" class="Goal"></FROM>
+<TO instance="Service performed" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:8</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Dependency strength" type="ENUMERATION">committed</ATTRIBUTE>
+<ATTRIBUTE name="Dependency validity" type="ENUMERATION">valid</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of dependency strength" type="ENUMERATION">start point</ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction (Model)" type="EXPRESSION">EXPR val:&quot;horizontal&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction" type="ENUMERATION">from left to right</ATTRIBUTE>
+<ATTRIBUTE name="Change modelling direction (global)" type="PROGRAMCALL">ITEM &quot;Change modelling direction (global)&quot; param:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Flag" type="STRING">script</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14634" class="Dependency Link">
+<FROM instance="Service performed" class="Goal"></FROM>
+<TO instance="Delivery outsourced" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:9</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Dependency strength" type="ENUMERATION">committed</ATTRIBUTE>
+<ATTRIBUTE name="Dependency validity" type="ENUMERATION">valid</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of dependency strength" type="ENUMERATION">start point</ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction (Model)" type="EXPRESSION">EXPR val:&quot;horizontal&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction" type="ENUMERATION">from left to right</ATTRIBUTE>
+<ATTRIBUTE name="Change modelling direction (global)" type="PROGRAMCALL">ITEM &quot;Change modelling direction (global)&quot; param:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Flag" type="STRING">script</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14635" class="Is inside">
+<FROM instance="Sustainability" class="Softgoal"></FROM>
+<TO instance="Boundary-13493" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14636" class="Contribution Link">
+<FROM instance="Regulations satisfied" class="Goal"></FROM>
+<TO instance="Sustainability" class="Softgoal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:34</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="Link lines" type="ENUMERATION">solid</ATTRIBUTE>
+<ATTRIBUTE name="Representation of link type" type="ENUMERATION">left/right</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:37</ATTRIBUTE>
+<ATTRIBUTE name="Type of contribution" type="ENUMERATION">Make</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14642" class="Is inside">
+<FROM instance="Load" class="Task"></FROM>
+<TO instance="Boundary-13551" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14643" class="Is inside">
+<FROM instance="Container loaded" class="Goal"></FROM>
+<TO instance="Boundary-13497" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14644" class="Decomposition Link">
+<FROM instance="Container loaded" class="Goal"></FROM>
+<TO instance="Delivery provided" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:39</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:41</ATTRIBUTE>
 <ATTRIBUTE name="Type of decomposition" type="ENUMERATION">AND</ATTRIBUTE>
 <ATTRIBUTE name="Flag" type="STRING">model</ATTRIBUTE>
 </CONNECTOR>
-<CONNECTOR id="con.16638" class="Decomposition Link">
-<FROM instance="ReliableDelivery" class="Goal"></FROM>
-<TO instance="GoodService" class="Goal"></TO>
-<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:17</ATTRIBUTE>
+<CONNECTOR id="con.14645" class="Dependency Link">
+<FROM instance="Container loaded" class="Goal"></FROM>
+<TO instance="Container" class="Resource"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:2</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Dependency strength" type="ENUMERATION">committed</ATTRIBUTE>
+<ATTRIBUTE name="Dependency validity" type="ENUMERATION">valid</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of dependency strength" type="ENUMERATION">start point</ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction (Model)" type="EXPRESSION">EXPR val:&quot;horizontal&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction" type="ENUMERATION">from left to right</ATTRIBUTE>
+<ATTRIBUTE name="Change modelling direction (global)" type="PROGRAMCALL">ITEM &quot;Change modelling direction (global)&quot; param:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Flag" type="STRING">script</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14646" class="Dependency Link">
+<FROM instance="Container" class="Resource"></FROM>
+<TO instance="Load" class="Task"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:3</ATTRIBUTE>
+<ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Dependency strength" type="ENUMERATION">committed</ATTRIBUTE>
+<ATTRIBUTE name="Dependency validity" type="ENUMERATION">valid</ATTRIBUTE>
+<ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
+<ATTRIBUTE name="Representation of dependency strength" type="ENUMERATION">start point</ATTRIBUTE>
+<ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
+<ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING"></ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction (Model)" type="EXPRESSION">EXPR val:&quot;horizontal&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Modelling direction" type="ENUMERATION">from left to right</ATTRIBUTE>
+<ATTRIBUTE name="Change modelling direction (global)" type="PROGRAMCALL">ITEM &quot;Change modelling direction (global)&quot; param:&quot;&quot;</ATTRIBUTE>
+<ATTRIBUTE name="Flag" type="STRING">script</ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14648" class="Is inside">
+<FROM instance="Shipment organized" class="Goal"></FROM>
+<TO instance="Boundary-13551" class="Boundary"></TO>
+<ATTRIBUTE name="AutoConnect" type="STRING"></ATTRIBUTE>
+</CONNECTOR>
+<CONNECTOR id="con.14649" class="Decomposition Link">
+<FROM instance="Load" class="Task"></FROM>
+<TO instance="Shipment organized" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:41</ATTRIBUTE>
 <ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
-<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:17</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:43</ATTRIBUTE>
 <ATTRIBUTE name="Type of decomposition" type="ENUMERATION">AND</ATTRIBUTE>
 <ATTRIBUTE name="Flag" type="STRING">model</ATTRIBUTE>
 </CONNECTOR>
-<CONNECTOR id="con.16640" class="Decomposition Link">
-<FROM instance="EmployeesWellBeing" class="Goal"></FROM>
-<TO instance="GoodService" class="Goal"></TO>
-<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:19</ATTRIBUTE>
+<CONNECTOR id="con.14650" class="Decomposition Link">
+<FROM instance="Delivery requested" class="Goal"></FROM>
+<TO instance="Shipment organized" class="Goal"></TO>
+<ATTRIBUTE name="Positions" type="STRING">EDGE 0 index:42</ATTRIBUTE>
 <ATTRIBUTE name="Comment" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Description" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Indication" type="STRING"></ATTRIBUTE>
 <ATTRIBUTE name="Representation of indication" type="ENUMERATION">above/below</ATTRIBUTE>
 <ATTRIBUTE name="vm_b_isVisible" type="INTEGER">1</ATTRIBUTE>
-<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:19</ATTRIBUTE>
+<ATTRIBUTE name="vm_lst_relevantVariants" type="LONGSTRING">DefaultÂEDGE 0 index:44</ATTRIBUTE>
 <ATTRIBUTE name="Type of decomposition" type="ENUMERATION">AND</ATTRIBUTE>
 <ATTRIBUTE name="Flag" type="STRING">model</ATTRIBUTE>
 </CONNECTOR>
